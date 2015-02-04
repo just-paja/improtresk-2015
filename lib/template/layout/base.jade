@@ -1,0 +1,13 @@
+doctype html
+html(lang=$loc->get_lang())
+	head
+		include ../partial/scripts.jade
+
+		:php
+			$ren->content_for('title', $loc->trans('public-name'));
+			$ren->content_from('head');
+
+	body
+		asdf
+
+		include ../partial/ga.jade

@@ -1,0 +1,6 @@
+[
+	["^/$", {
+		"title":"Improtřesk",
+		"layout":["layout/base"]
+	}, "home"]
+]
