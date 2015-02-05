@@ -1,6 +1,12 @@
 .ui-form-workshop_ideas {
+	margin-bottom:20px;
+
+	& > .desc {
+		margin-bottom:30px;
+	}
+
 	.input {
-		margin:10px;
+		margin:0 0 10px;
 	}
 
 	.input-container,
@@ -19,9 +25,96 @@
 		margin-bottom:5px;
 	}
 
-	.input-checkbox {
+	.input,
+	.input-email
+	{
+		input {
+			border:1px solid #ccc;
+			border-radius:4px;
+			font-size:22px;
+			height:30px;
+			padding:5px 15px;
+			width:300px;
+		}
+
 		label {
-			width:600px
+			line-height:42px;
+			height:42px;
+			vertical-align:top;
+			width:160px;
+		}
+
+		&.invalid {
+			input {
+				border-color:#f00;
+			}
+		}
+	}
+
+	.input-named-name,
+	.input-named-email
+	{
+		font-size:22px;
+	}
+
+	.input-named-email {
+		margin-bottom:30px;
+	}
+
+	.input-named-workshops {
+		& > .outer > label {
+			font-size:22px;
+			margin-bottom:20px;
+		}
+	}
+
+	.input-checkbox {
+		input {
+			width:auto;
+		}
+
+		label {
+			height:auto;
+			width:580px;
+			line-height:22px;
+		}
+	}
+
+	.checkbox-multi {
+		.input {
+			border-radius:6px;
+			cursor:pointer;
+			padding:10px;
+			.fix-transition(@speed-fast);
+
+			label {
+				cursor:pointer;
+			}
+
+			&:hover {
+				background:#f6f6f6;
+			}
+		}
+	}
+
+	button,
+	.button,
+	.fp-button
+	{
+		color:#fff;
+		background:#B82429;
+		font-weight:normal;
+		border:none;
+		padding:5px 18px;
+		border-radius:3px;
+		cursor:pointer;
+		text-decoration:none;
+		display:inline-block;
+		font-size:24px;
+		text-transform:uppercase;
+
+		&:hover {
+			background:#86262A;
 		}
 	}
 }

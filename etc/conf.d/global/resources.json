@@ -15,6 +15,7 @@
 				"bower/pwf-form",
 				"bower/pwf-queue",
 				"bower/pwf-comm",
+				"bower/pwf-comm-form",
 				"bower/pwf-models-schema",
 				"bower/pwf-models",
 
@@ -27,6 +28,7 @@
 			"screen":[
 				"bower/reset-css",
 				"bower/pwf-form/styles/form",
+				"styles/vars",
 				"styles/layout",
 				"styles/ui"
 			]

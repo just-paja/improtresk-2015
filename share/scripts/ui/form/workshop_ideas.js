@@ -8,28 +8,36 @@
 
 		"storage":{
 			"opts":{
+				'action':'/formulare/koncept/feed',
+				'heading':'Improtřesk 2015',
+				'desc':'Improtřesk 2015',
 				'model':'Workshop.Concept',
 				"elements":[
 					{
+						'name':'submited',
+						'type':'hidden',
+						'value':1
+					},
+
+					{
 						'name':'name',
 						'type':'text',
-						'label':'Jméno',
+						'label':'Tvoje jméno',
 						'required':true
 					},
 
 					{
 						'name':'email',
 						'type':'email',
-						'label':'E-mail',
+						'label':'Tvůj e-mail',
 						'required':true
 					},
 
 					{
 						"name":'workshops',
-						'label':'Vyberte tři workshopy',
+						'label':'Vyber tři workshopy',
 						'type':'checkbox',
 						'multiple':true,
-						'maxlength':3,
 						'required':true,
 						'value':[]
 					},
@@ -71,7 +79,7 @@
 					});
 				}
 
-				p.storage.opts.elements[2].options = opts;
+				p.storage.opts.elements[3].options = opts;
 
 				p('create_meta');
 				p('create_form_obj');

@@ -1,8 +1,16 @@
 [
-	["^/$", {
+	["^/formulare/koncept$", {
 		"title":"Improtřesk",
 		"modules":[
 			["forms/concept"]
 		]
-	}, "home"]
+	}, "concept"],
+
+
+	["^/formulare/koncept/feed$", {
+		"title":"Improtřesk",
+		"modules":[
+			["forms/concept_feed"]
+		]
+	}, "concept"]
 ]
