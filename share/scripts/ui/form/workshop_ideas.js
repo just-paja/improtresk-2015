@@ -26,6 +26,11 @@
 					}
 				},
 
+
+				'on_invalid':function(err) {
+					alert('Vyplň prosím svoje jméno, e-mail a vyber přesně tři workshopy.');
+				},
+
 				"elements":[
 					{
 						'name':'submited',

@@ -42,8 +42,12 @@
 	.input {
 		.fix-transition(@speed-fast);
 
-		&:hover > .outer > label {
-			color:#ffd900;
+		&:hover,
+		&:active
+		{
+			& > .outer > label {
+				color:#ffd900;
+			}
 		}
 	}
 
@@ -107,8 +111,12 @@
 	.checkbox-multi {
 		margin-bottom:25px;
 
-		&:hover > .outer >label {
-			color:#fff;
+		&:hover,
+		&:active
+		{
+			& > .outer >label {
+				color:#fff;
+			}
 		}
 
 		.input {
