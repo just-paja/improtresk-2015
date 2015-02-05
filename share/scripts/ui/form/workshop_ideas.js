@@ -12,6 +12,11 @@
 				'heading':'Improtřesk 2015',
 				'desc':'Improtřesk 2015',
 				'model':'Workshop.Concept',
+				'sort':[
+					{
+						'attr':'name',
+					}
+				],
 				"elements":[
 					{
 						'name':'submited',
