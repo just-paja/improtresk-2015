@@ -1,0 +1,31 @@
+{
+	"name":"improtresk-2015",
+	"private":true,
+	"dependencies":{
+		"jquery":"^1.11",
+		"moment":"^2.8",
+		"jquery.actual":"^1.0",
+		"reset-css":"^2.0",
+		"pwf.js":"^1.8",
+		"pwf-config":"^1.3",
+		"pwf-godmode":"~0.2",
+
+		"pwf-paginator":"^0.3",
+		"pwf-adminer":"^0.4",
+		"pwf-models-schema":"^0.3",
+
+		"pwf-async-compat":"*",
+		"pwf-moment-compat":"*",
+
+		"pwf-input-autocompleter":"*",
+		"pwf-input-collection":"*",
+		"pwf-input-file":"*",
+		"pwf-input-gps":"*",
+		"pwf-input-rte":"*",
+
+		"pwf-locales":"*",
+		"pwf-queue":"*",
+		"pwf-storage":"*",
+		"pwf-form":"*"
+	}
+}
