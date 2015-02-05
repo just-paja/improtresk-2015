@@ -6,6 +6,8 @@
 		"vendor-dir":"lib/vendor"
 	},
 	"require":{
-		"just-paja/fudjan":"*"
+		"just-paja/fudjan":"*",
+		"just-paja/fudjan-api":"*",
+		"just-paja/fudjan-godmode":"*"
 	}
 }
