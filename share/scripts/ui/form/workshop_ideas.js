@@ -44,7 +44,12 @@
 						'type':'checkbox',
 						'multiple':true,
 						'required':true,
-						'value':[]
+						'value':[],
+						'on_validate':function() {
+							var val = this.val();
+
+							return val.length > 0 && val.length <= 3;
+						}
 					},
 
 					{
