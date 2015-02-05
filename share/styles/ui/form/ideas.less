@@ -1,7 +1,15 @@
 .ui-form-workshop_ideas {
+	background:rgba(50,50,50,.2);
+	padding:40px;
 	margin-bottom:20px;
+	text-shadow:
+		0 0 1px #000,
+		0 0 2px #333
+		;
 
 	& > .desc {
+		font-size:20px;
+		line-height:24px;
 		margin-bottom:30px;
 	}
 
@@ -14,6 +22,8 @@
 	{
 		display:inline-block;
 		vertical-align:top;
+		color:#fff;
+
 	}
 
 	.input-container {
@@ -29,6 +39,14 @@
 		display:none;
 	}
 
+	.input {
+		.fix-transition(@speed-fast);
+
+		&:hover > .outer > label {
+			color:#ffd900;
+		}
+	}
+
 	.input,
 	.input-email
 	{
@@ -42,6 +60,7 @@
 		}
 
 		label {
+			.fix-transition(@speed-fast);
 			line-height:42px;
 			height:42px;
 			vertical-align:top;
@@ -74,6 +93,7 @@
 
 	.input-checkbox {
 		input {
+			height:auto;
 			width:auto;
 		}
 
@@ -85,18 +105,23 @@
 	}
 
 	.checkbox-multi {
+		margin-bottom:25px;
+
+		&:hover > .outer >label {
+			color:#fff;
+		}
+
 		.input {
 			border-radius:6px;
 			cursor:pointer;
-			padding:10px;
-			.fix-transition(@speed-fast);
+			padding:10px 10px 13px;
 
 			label {
 				cursor:pointer;
 			}
 
 			&:hover {
-				background:#f6f6f6;
+				background:rgba(255,255,255,.15);
 			}
 		}
 	}
@@ -120,5 +145,11 @@
 		&:hover {
 			background:#86262A;
 		}
+	}
+
+	button {
+		display:block;
+		width:150px;
+		margin:0 auto;
 	}
 }

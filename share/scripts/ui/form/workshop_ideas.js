@@ -10,13 +10,22 @@
 			"opts":{
 				'action':'/formulare/koncept/feed',
 				'heading':'Improtřesk 2015',
-				'desc':'Improtřesk 2015',
+				'desc':'Improtřesk bude tento rok v Milevsku a všichni mají možnost vybrat si, které workshopy nabídne. Hlasuj pro tři workshopy tvého výběru. Workshopy s největším počtem hlasů se uskuteční. Hlasování končí v <span style="text-decoration:underline">pátek 13. února v 20:00</span>.',
 				'model':'Workshop.Concept',
 				'sort':[
 					{
 						'attr':'name',
 					}
 				],
+
+				'on_ready':function(err) {
+					if (err) {
+						this.display_error(err);
+					} else {
+						this.display_thanks();
+					}
+				},
+
 				"elements":[
 					{
 						'name':'submited',
@@ -46,9 +55,7 @@
 						'required':true,
 						'value':[],
 						'on_validate':function() {
-							var val = this.val();
-
-							return val.length > 0 && val.length <= 3;
+							return this.val().length == 3;
 						}
 					},
 
@@ -93,6 +100,39 @@
 
 				p('create_meta');
 				p('create_form_obj');
+			}
+		},
+
+
+		'public':{
+			'display_error':function(err)
+			{
+				alert('Ajaj. Něco tady nefunguje. Zkus to prosím znovu později.');
+				v(err);
+			},
+
+
+			'display_thanks':function(p, next)
+			{
+				var jobs = [];
+
+				jobs.push(function(next) {
+					p.object.get_el('form').stop(true).slideUp(500, next);
+				});
+
+				jobs.push(function(next) {
+					var el = p.object.get_el();
+
+					el.create_divs(['thanks']);
+
+					el.thanks
+						.html('Děkujeme. Sledujte Facebookovou událost kvůli novinkám.')
+						.hide()
+						.slideDown(500, next);
+				});
+
+
+				pwf.async.series(jobs, next);
 			}
 		}
 	});
