@@ -1,6 +1,8 @@
 [
 	["^/$", {
 		"title":"Improtřesk",
-		"layout":["layout/base"]
+		"modules":[
+			["forms/concept"]
+		]
 	}, "home"]
 ]

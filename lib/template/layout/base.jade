@@ -3,11 +3,14 @@ html(lang=$loc->get_lang())
 	head
 		include ../partial/scripts.jade
 
+		link(rel='stylesheet', type='text/css', href=$ren->link_resource('style', 'screen'))
+
 		:php
 			$ren->content_for('title', $loc->trans('public-name'));
 			$ren->content_from('head');
 
 	body
-		asdf
+		:php
+			$ren->slot();
 
 		include ../partial/ga.jade

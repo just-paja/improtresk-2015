@@ -2,8 +2,40 @@
 	"packages":{
 		"script":{
 			"public":[
-				"bower/pwf.js"
+				"bower/async",
+
+				"bower/pwf.js",
+
+				"bower/pwf-jquery-compat",
+				"bower/pwf-async-compat",
+				"bower/pwf-moment-compat",
+
+				"bower/pwf-config",
+				"bower/pwf-preloader",
+				"bower/pwf-form",
+				"bower/pwf-queue",
+				"bower/pwf-comm",
+				"bower/pwf-models-schema",
+				"bower/pwf-models",
+
+				"scripts/ui",
+				"scripts/ctrl"
+			]
+		},
+
+		"style":{
+			"screen":[
+				"bower/reset-css",
+				"bower/pwf-form/styles/form",
+				"styles/layout",
+				"styles/ui"
 			]
 		}
+	},
+
+	"models":{
+		"public":[
+			"Workshop.Concept"
+		]
 	}
 }

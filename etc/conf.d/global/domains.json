@@ -1,0 +1,9 @@
+{
+	"overwrite":true,
+	"global":{
+		"rules":[".*"],
+		"layout":["layout/base"],
+		"policies":["www_free", "frontend_config", "frontend_api"],
+		"init":["godmode"]
+	}
+}

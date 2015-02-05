@@ -1,0 +1,8 @@
+[
+	{
+		"title":"Workshop concepts",
+		"opts":{
+			"model":"Workshop.Concept"
+		}
+	}
+]
