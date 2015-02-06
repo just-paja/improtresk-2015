@@ -1,6 +1,6 @@
 [
 	["^/formulare/koncept$", {
-		"title":"Improtřesk",
+		"title":"Improtřesk 2015",
 		"modules":[
 			["forms/concept"]
 		]
@@ -8,9 +8,18 @@
 
 
 	["^/formulare/koncept/feed$", {
-		"title":"Improtřesk",
+		"title":"Improtřesk 2015",
+		"format":"json",
 		"modules":[
 			["forms/concept_feed"]
+		]
+	}, "concept"],
+
+
+	["^/formulare/koncept/vysledky$", {
+		"title":"Improtřesk",
+		"modules":[
+			["forms/concept_results"]
 		]
 	}, "concept"]
 ]

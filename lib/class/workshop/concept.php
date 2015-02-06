@@ -8,6 +8,12 @@ namespace Workshop
 			'name' => array('varchar'),
 			'desc' => array('html'),
 			'visible' => array('bool'),
+			'requests' => array(
+				"type" => 'has_many',
+				"model" => 'Workshop\Request',
+				"is_bilinear" => true,
+				"is_master" => false
+			),
 		);
 
 

@@ -1,0 +1,10 @@
+:php
+	$x = 0;
+
+.results
+	ol.results-inner
+		- foreach $concepts as $concept
+			li.workshop
+				.pos!=(++$x).'.'
+				.name!=$concept->name
+				.count!=$concept->total

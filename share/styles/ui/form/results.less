@@ -1,0 +1,45 @@
+.results {
+	padding-top:50px;
+
+	.results-inner {
+		background:rgba(50,50,50,.25);
+		margin:0 auto;
+		padding:40px 20px;
+		width:350px;
+
+		.workshop {
+			.fix-transition(@speed-fast);
+			border-radius:4px;
+			line-height:26px;
+			padding:0 20px;
+
+			&:hover {
+				background:rgba(255,255,255,.15);
+			}
+		}
+
+		.pos,
+		.name,
+		.count
+		{
+			cursor:default;
+			display:inline-block;
+		}
+
+		.pos {
+			opacity:.5;
+			padding-right:10px;
+			text-align:right;
+			width:20px;
+		}
+
+		.count {
+			text-align:right;
+			width:50px;
+		}
+
+		.name {
+			width:230px;
+		}
+	}
+}
