@@ -61,6 +61,29 @@
 						'value':[],
 						'on_validate':function() {
 							return this.val().length == 3;
+						},
+
+						'on_change':function() {
+							var other = this.get('form').get_input('other');
+
+							if (~this.val().indexOf('666')) {
+								other.get_el().show();
+								other.set('required', true);
+							} else {
+								other.get_el().hide();
+								other.set('required', false);
+							}
+						}
+					},
+
+					{
+						'name':'other',
+						'label':'Tvoje představa jiného workshopu',
+						'type':'textarea',
+						'on_validate':function() {
+							var ws = this.get('form').get_input('workshops');
+
+							return !~ws.val().indexOf('666') || this.val().length > 10;
 						}
 					},
 
@@ -100,6 +123,15 @@
 						'value':items[i].get('id')
 					});
 				}
+
+				var other = pwf.jquery.div('workshop-option');
+
+				other.create_divs(['name', 'desc']);
+
+				other.name.html('Jiný workshop');
+				other.desc.html('Napiš nám vlastní představu workshopu.');
+
+				opts.push({'value':666, 'name':other});
 
 				p.storage.opts.elements[3].options = opts;
 
