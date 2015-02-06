@@ -7,6 +7,10 @@
 		0 0 2px #333
 		;
 
+	.form-group-typed-inputs {
+		margin-bottom:25px;
+	}
+
 	& > .desc {
 		font-size:20px;
 		line-height:24px;
@@ -52,11 +56,15 @@
 	}
 
 	.input,
-	.input-email
+	.input-email,
+	.input-textarea
 	{
-		input {
+		input,
+		textarea
+		{
 			border:1px solid #ccc;
 			border-radius:4px;
+			font-family:'roboto-condensed';
 			font-size:22px;
 			height:30px;
 			padding:5px 15px;
@@ -72,9 +80,24 @@
 		}
 
 		&.invalid {
-			input {
+			input,
+			textarea
+			{
 				border-color:#f00;
 			}
+		}
+	}
+
+	.input-textarea {
+		label {
+			display:block;
+			width:auto;
+		}
+
+		textarea {
+			height:100px;
+			width:500px;
+			resize:resize-y;
 		}
 	}
 
@@ -89,9 +112,19 @@
 	}
 
 	.input-named-workshops {
+		margin-bottom:0;
+
 		& > .outer > label {
 			font-size:22px;
 			margin-bottom:20px;
+		}
+	}
+
+	.input-named-other {
+		padding-left:40px;
+
+		label {
+			display:none;
 		}
 	}
 
@@ -109,8 +142,6 @@
 	}
 
 	.checkbox-multi {
-		margin-bottom:25px;
-
 		&:hover,
 		&:active
 		{
@@ -130,6 +161,10 @@
 
 			&:hover {
 				background:rgba(255,255,255,.15);
+			}
+
+			&:last-child {
+				margin-bottom:0;
 			}
 		}
 	}
