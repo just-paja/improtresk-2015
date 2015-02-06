@@ -152,6 +152,8 @@
 
 				p('create_meta');
 				p('create_form_obj');
+
+				this.get_input('workshops').job('change');
 			}
 		},
 
