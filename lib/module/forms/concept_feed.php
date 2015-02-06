@@ -60,4 +60,5 @@ if ($f->submited()) {
 	}
 }
 
+$response->mime = 'text/html';
 $this->json_response($status, $message, $data);
