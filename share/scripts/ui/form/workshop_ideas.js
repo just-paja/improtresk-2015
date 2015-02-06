@@ -10,7 +10,7 @@
 			"opts":{
 				'action':'/formulare/koncept/feed',
 				'heading':'Improtřesk 2015',
-				'desc':'Improtřesk bude tento rok v Milevsku a všichni mají možnost vybrat si, které workshopy nabídne. Hlasuj pro tři workshopy tvého výběru. Workshopy s největším počtem hlasů se uskuteční. Hlasování končí v <span style="text-decoration:underline">pátek 13. února v 20:00</span>.',
+				'desc':'Letošní Improtřesk bude 7. - 10. května v Milevsku a ty máš možnost ovlivnit, jaké workshopy nabídne. Hlasuj až pro tři workshopy. Workshopy s největším počtem hlasů se pokusíme uskutečnit. Hlasování končí v <span style="text-decoration:underline">pátek 13. února v 20:00</span>. Toto není přihláška na Improtřesk 2015.',
 				'model':'Workshop.Concept',
 				'sort':[
 					{
