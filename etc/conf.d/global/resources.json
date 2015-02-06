@@ -11,6 +11,7 @@
 				"bower/pwf-moment-compat",
 
 				"bower/pwf-config",
+				"bower/pwf-storage",
 				"bower/pwf-preloader",
 				"bower/pwf-form",
 				"bower/pwf-queue",

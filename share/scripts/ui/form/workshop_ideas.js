@@ -22,6 +22,7 @@
 					if (err) {
 						this.display_error(err);
 					} else {
+						pwf.storage.store('concept_voted', pwf.moment().format('YYYY-MM-DD HH:mm:ss'));
 						this.display_thanks();
 					}
 				},
@@ -106,7 +107,15 @@
 		'proto':{
 			'create_struct':function(p)
 			{
-				this.load();
+				var voted = pwf.storage.get('concept_voted');
+
+				if (voted) {
+					p('create_meta');
+					this.get_el('form').hide();
+					this.display_thanks();
+				} else {
+					this.load();
+				}
 			},
 
 
