@@ -22,6 +22,10 @@
 		"pwf-input-file":"*",
 		"pwf-input-gps":"*",
 		"pwf-input-rte":"*",
+		"pwf-input-date":"*",
+
+		"pwf-ui-calendar":"*",
+		"pwf-ui-popup":"*",
 
 		"pwf-locales":"*",
 		"pwf-queue":"*",
