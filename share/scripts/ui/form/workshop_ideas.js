@@ -22,7 +22,7 @@
 					if (err) {
 						this.display_error(err);
 					} else {
-						//~ pwf.storage.store('concept_voted', pwf.moment().format('YYYY-MM-DD HH:mm:ss'));
+						pwf.storage.store('concept_voted', pwf.moment().format('YYYY-MM-DD HH:mm:ss'));
 						this.display_thanks();
 					}
 				},
