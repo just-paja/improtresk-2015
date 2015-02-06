@@ -8,3 +8,9 @@
 				.pos!=(++$x).'.'
 				.name!=$concept->name
 				.count!=$concept->total
+
+
+.results.results-verbal
+	ol
+		-foreach $requests as $rq
+			li.results-inner!=$rq->other

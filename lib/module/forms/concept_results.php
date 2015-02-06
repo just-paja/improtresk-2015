@@ -1,6 +1,12 @@
 <?
 
 $concepts = get_all('\Workshop\Concept')->sort_by('name')->fetch();
+$requests = get_all('\Workshop\Request')->add_filter(array(
+	'attr' => 'other',
+	'type' => 'is_null',
+	'is_null' => false
+))->sort_by('created_at desc')->fetch();
+
 
 foreach ($concepts as $ws) {
 	$ws->total = $ws->requests->count();
@@ -15,5 +21,6 @@ usort($concepts, function($a, $b) {
 });
 
 $this->partial('concept/results', array(
-	"concepts" => $concepts
+	"concepts" => $concepts,
+	"requests" => $requests
 ));

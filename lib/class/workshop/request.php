@@ -13,6 +13,8 @@ namespace Workshop
 				"is_bilinear" => true,
 				"is_master" => true
 			),
+
+			'other' => array('text', "is_null" => true),
 		);
 	}
 }
