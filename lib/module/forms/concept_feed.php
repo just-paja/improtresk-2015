@@ -25,7 +25,7 @@ $f->input(array(
 ));
 
 $f->input(array(
-	'type' => 'textare',
+	'type' => 'textarea',
 	'name' => 'other',
 	'required' => false
 ));

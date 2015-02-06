@@ -9,6 +9,9 @@ html(lang=$loc->get_lang())
 		meta(name="description", content="Improtřesk 2015 - Festival divadelní improvizace")
 		meta(name="viewport", content="width=device-width")
 
+		meta(name="og:title", content=$loc->trans('public-name'))
+		meta(name="og:url", content=$rq->path)
+
 		:php
 			$ren->content_for('title', $loc->trans('public-name'));
 			$ren->content_from('head');
