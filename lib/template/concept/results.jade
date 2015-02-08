@@ -1,11 +1,11 @@
 :php
-	$x = 0;
+	$x = 1;
 
 .results
 	ol.results-inner
 		- foreach $concepts as $concept
-			li.workshop
-				.pos!=(++$x).'.'
+			li.workshop(class='pos-'.$x)
+				.pos!=($x++).'.'
 				.name!=$concept->name
 				.count!=$concept->total
 
