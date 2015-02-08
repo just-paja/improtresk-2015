@@ -9,8 +9,14 @@
 				.name!=$concept->name
 				.count!=$concept->total
 
+.results.results-total
+	.results-inner.
+		Celkem hlasovalo #{count} lidí
 
 .results.results-verbal
 	ol
 		-foreach $requests as $rq
-			li.results-inner!=$rq->other
+			li.results-inner
+				span.author #{$rq->name}:
+				= ' '
+				span.desc #{$rq->other}

@@ -4,7 +4,12 @@ $status = 400;
 $message = 'fill-all-fields';
 $data = null;
 
-$opts = get_all('\Workshop\Concept')->fetch();
+$concepts = get_all('\Workshop\Concept')->fetch();
+$opts = array();
+
+foreach ($concepts as $concept) {
+	$opts[$concept->id] = $concept;
+}
 
 $opts[666] = 'other';
 

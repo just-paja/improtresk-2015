@@ -1,5 +1,6 @@
 <?
 
+$count = get_all('\Workshop\Request')->count();
 $concepts = get_all('\Workshop\Concept')->sort_by('name')->fetch();
 $requests = get_all('\Workshop\Request')->add_filter(array(
 	'attr' => 'other',
@@ -21,6 +22,7 @@ usort($concepts, function($a, $b) {
 });
 
 $this->partial('concept/results', array(
+	"count"    => $count,
 	"concepts" => $concepts,
 	"requests" => $requests
 ));
