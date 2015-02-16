@@ -2,12 +2,12 @@
 	if $started
 		if $ended
 			.site-summary
-				| Přihlašování je již uzavřeno
+				.report Přihlašování je již uzavřeno
 		else
 			.form-signup
 	else
 		.site-summary
-			| Přihlašování se otevře #{$start_f}.
+			.report Přihlašování se otevře #{$start_f}.
 
 
 	.site-summary.read-info
