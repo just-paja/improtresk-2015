@@ -15,13 +15,13 @@
 		]
 	}, "workshops"],
 
-	["^/program$", {
-		"title":"Program - Improtřesk 2015",
-		"subtitle":"Program",
+	["^/pro-ucastniky$", {
+		"title":"Informace pro účastníky - Improtřesk 2015",
+		"subtitle":"Informace pro účastníky",
 		"modules":[
-			["system/partial", {"template":"pages/schedule"}]
+			["system/partial", {"template":"pages/info"}]
 		]
-	}, "schedule"],
+	}, "info"],
 
 	["^/co-je-improtresk$", {
 		"title":"Co je Improtřesk? - Improtřesk 2015",
@@ -35,7 +35,7 @@
 		"title":"Přihláška - Improtřesk 2015",
 		"subtitle":"Přihláška",
 		"modules":[
-			["system/partial", {"template":"pages/signup"}]
+			["forms/signup"]
 		]
 	}, "signup"],
 

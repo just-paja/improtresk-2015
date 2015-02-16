@@ -1,0 +1,18 @@
+if $started
+	if $ended
+		.site-summary
+			| Přihlašování je již uzavřeno
+	else
+		.form-signup
+else
+	.site-summary
+		| Přihlašování se otevře #{$start_f}.
+
+
+.site-summary
+	.text
+		| Přečtěte si
+		if ! $started
+			&nbsp;zatím
+	.info
+		a(href=$ren->url('info')) informace pro účastníky
