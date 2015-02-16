@@ -1,18 +1,24 @@
-if $started
-	if $ended
-		.site-summary
-			| Přihlašování je již uzavřeno
+.signup
+	if $started
+		if $ended
+			.site-summary
+				| Přihlašování je již uzavřeno
+		else
+			.form-signup
 	else
-		.form-signup
-else
-	.site-summary
-		| Přihlašování se otevře #{$start_f}.
+		.site-summary
+			| Přihlašování se otevře #{$start_f}.
 
 
-.site-summary
-	.text
-		| Přečtěte si
-		if ! $started
-			&nbsp;zatím
-	.info
-		a(href=$ren->url('info')) informace pro účastníky
+	.site-summary.read-info
+		.text
+			| Přečtěte si
+			if ! $started
+				&nbsp;zatím
+		.info
+			a(href=$ren->url('info')) informace pro účastníky
+
+	.site-summary.carshare
+		.text Máte místo v autě?
+		.info
+			a(href=$ren->url('carshare')) Nabídněte ho ostatním
