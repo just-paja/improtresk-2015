@@ -1,6 +1,63 @@
 [
-	["^/formulare/koncept$", {
+	["^/$", {
 		"title":"Improtřesk 2015",
+		"subtitle":"Festival divadelní improvizace",
+		"modules":[
+			["system/partial", {"template":"pages/home"}]
+		]
+	}, "home"],
+
+	["^/workshopy$", {
+		"title":"Workshopy - Improtřesk 2015",
+		"subtitle":"Workshopy",
+		"modules":[
+			["system/partial", {"template":"pages/workshops"}]
+		]
+	}, "workshops"],
+
+	["^/program$", {
+		"title":"Program - Improtřesk 2015",
+		"subtitle":"Program",
+		"modules":[
+			["system/partial", {"template":"pages/schedule"}]
+		]
+	}, "schedule"],
+
+	["^/co-je-improtresk$", {
+		"title":"Co je Improtřesk? - Improtřesk 2015",
+		"subtitle":"Co je to Improtřesk?",
+		"modules":[
+			["system/partial", {"template":"pages/about"}]
+		]
+	}, "about"],
+
+	["^/prihlaska$", {
+		"title":"Přihláška - Improtřesk 2015",
+		"subtitle":"Přihláška",
+		"modules":[
+			["system/partial", {"template":"pages/signup"}]
+		]
+	}, "signup"],
+
+	["^/autem$", {
+		"title":"Cesta autem - Improtřesk 2015",
+		"subtitle":"Cesta autem",
+		"modules":[
+			["system/partial", {"template":"pages/carshare"}]
+		]
+	}, "carshare"],
+
+	["^/kontakt$", {
+		"title":"Kontakt - Improtřesk 2015",
+		"subtitle":"Kontaktní informace",
+		"modules":[
+			["system/partial", {"template":"pages/contact"}]
+		]
+	}, "contact"],
+
+
+	["^/formulare/koncept$", {
+		"layout":["layout/base"],
 		"modules":[
 			["forms/concept"]
 		]
@@ -8,18 +65,17 @@
 
 
 	["^/formulare/koncept/feed$", {
-		"title":"Improtřesk 2015",
 		"format":"json",
 		"modules":[
 			["forms/concept_feed"]
 		]
-	}, "concept"],
+	}, "concept_feed"],
 
 
 	["^/formulare/koncept/vysledky$", {
-		"title":"Improtřesk",
+		"layout":["layout/base"],
 		"modules":[
 			["forms/concept_results"]
 		]
-	}, "concept"]
+	}, "concept_results"]
 ]

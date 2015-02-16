@@ -18,6 +18,7 @@ html(lang=$loc->get_lang())
 
 	body
 		:php
+			$ren->render_yield();
 			$ren->slot();
 
 		include ../partial/ga.jade

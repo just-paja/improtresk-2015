@@ -13,3 +13,17 @@ body {
 	background:#333 url(<pixmap(hands-orig.jpg)>) center center no-repeat fixed;
 	background-size:cover;
 }
+
+a {
+	.fix-transition(@speed-fast);
+
+	&,
+	&:visited
+	{
+		color:#ffd900;
+	}
+
+	&:hover {
+		color:#fff;
+	}
+}

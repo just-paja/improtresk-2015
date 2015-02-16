@@ -1,0 +1,24 @@
+.frontend
+	header
+		.site-logo
+			h1.text Improtřesk
+			h2.subtitle!=$res->subtitle
+
+		.site-menu
+			menu
+				li
+					a(href=$ren->url('home')) Domů
+				li
+					a(href=$ren->url('workshops')) Workshopy
+				li
+					a(href=$ren->url('schedule')) Program
+				li
+					a(href=$ren->url('about')) Co je Improtřesk?
+				li
+					a(href=$ren->url('signup')) Přihláška
+				li
+					a(href=$ren->url('contact')) Kontakt
+
+	.content
+		:php
+			$ren->slot();
