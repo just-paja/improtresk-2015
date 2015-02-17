@@ -1,8 +1,8 @@
 <?
 
-$count = get_all('\Workshop\Request')->count();
-$concepts = get_all('\Workshop\Concept')->sort_by('name')->fetch();
-$requests = get_all('\Workshop\Request')->add_filter(array(
+$count = \Workshop\Request::get_all()->count();
+$concepts = \Workshop\Concept::get_all()->sort_by('name')->fetch();
+$requests = \Workshop\Request::get_all()->add_filter(array(
 	'attr' => 'other',
 	'type' => 'is_null',
 	'is_null' => false
