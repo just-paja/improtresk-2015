@@ -1,0 +1,13 @@
+{
+	"model-Car.Offer":"Auto",
+	"model-Car.Offer-plural":"Auta",
+
+	"model-Car.Offer-attr-desc":"Zpráva",
+	"model-Car.Offer-attr-driver":"Řidič",
+	"model-Car.Offer-attr-from":"Z",
+	"model-Car.Offer-attr-color":"Barva",
+	"model-Car.Offer-attr-departure":"Čas odjezdu",
+	"model-Car.Offer-attr-phone":"Telefon",
+	"model-Car.Offer-attr-email":"E-mail",
+	"model-Car.Offer-attr-requests":"Pasažéři"
+}

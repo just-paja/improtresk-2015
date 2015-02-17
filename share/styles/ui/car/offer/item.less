@@ -1,0 +1,115 @@
+.ui-car-offers-item {
+	.fix-transition(.2s);
+
+	border-radius:6px;
+	cursor:pointer;
+	height:110px;
+	padding:20px;
+	position:relative;
+
+	.vehicle {
+		background:none;
+		position:absolute;
+		right:10px;
+		top:50%;
+
+		.icon {
+			opacity:.5;
+			position:static;
+			margin:0 !important;
+		}
+
+		&.pickup .seats {
+			left:72px;
+			top:28px;
+		}
+
+		&.hatchback-3d .seats {
+			left:58px;
+			top:26px;
+		}
+
+		&.sedan .seats {
+			left:63px;
+			top:26px;
+		}
+
+		&.combi .seats {
+			left:63px;
+			top:26px;
+		}
+
+		&.hatchback .seats {
+			left:63px;
+			top:26px;
+		}
+
+		&.coupe .seats {
+			left:63px;
+			top:27px;
+		}
+
+		&.cabriolet .seats {
+			left:63px;
+			top:25px;
+		}
+
+		&.limousine .seats {
+			left:84px;
+			top:25px;
+		}
+
+		&.van .seats {
+			left:92px;
+			top:9px;
+		}
+
+		&.microbus .seats {
+			left:59px;
+			top:41px;
+		}
+
+		&.tank .seats {
+			left:265px;
+			top:60px;
+		}
+
+	}
+
+	.from {
+		font-family:'metace';
+		font-size:38px;
+		font-weight:bold;
+		line-height:40px;
+		text-transform:uppercase;
+	}
+
+	.seats {
+		.fix-transition(.2s);
+
+		cursor:default;
+		font-size:28px;
+		line-height:32px;
+		height:32px;
+		position:absolute;
+		text-align:center;
+		text-shadow:0 0 3px #333;
+		width:50px;
+	}
+
+
+	&:hover {
+		background:rgba(0,0,0,0.25);
+
+		.vehicle {
+			.icon {
+				opacity:.85;
+			}
+
+			.seats {
+				color:#666;
+				text-shadow:0 0 1px #000;
+			}
+		}
+	}
+}

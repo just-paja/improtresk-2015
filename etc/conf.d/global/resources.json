@@ -19,6 +19,10 @@
 				"bower/pwf-comm-form",
 				"bower/pwf-models-schema",
 				"bower/pwf-models",
+				"bower/pwf-locales",
+
+				"bower/pwf-adminer/lib/ext",
+				"bower/pwf-adminer/lib/adminer/abstract/filters",
 
 				"scripts/ui",
 				"scripts/ctrl"
@@ -39,7 +43,8 @@
 
 	"models":{
 		"public":[
-			"Workshop.Concept"
+			"Workshop.Concept",
+			"Car.Offer"
 		]
 	}
 }

@@ -4,5 +4,14 @@
 		"opts":{
 			"model":"Workshop.Concept"
 		}
+	},
+	{
+		"title":"Nabídky spolujízdy",
+		"opts":{
+			"model":"Car.Offer",
+			"attrs_list":["id", "from", "driver", "seats", "icon", "visible", "created_at"],
+			"attrs_edit":["color", "seats", "icon", "desc", "driver", "from", "departure", "phone", "email", "visible"],
+			"attrs_create":["color", "seats", "icon", "desc", "driver", "from", "departure", "phone", "email", "visible"]
+		}
 	}
 ]
