@@ -21,6 +21,9 @@
 				"bower/pwf-models",
 				"bower/pwf-locales",
 
+				"bower/pwf-ui-calendar",
+				"bower/pwf-input-date",
+
 				"bower/pwf-adminer/lib/ext",
 				"bower/pwf-adminer/lib/adminer/abstract/filters",
 
@@ -33,6 +36,7 @@
 			"screen":[
 				"bower/reset-css",
 				"bower/pwf-form/styles/form",
+				"bower/pwf-input-date/styles",
 				"styles/vars",
 				"styles/layout",
 				"styles/frontend",

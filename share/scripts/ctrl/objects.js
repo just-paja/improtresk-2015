@@ -15,8 +15,8 @@ pwf.wait_for('module', 'jquery', function() {
 			'selector':'.car-offers'
 		},
 		{
-			'ui':'ui.car.offers.popup_button',
-			'selector':'.car-offers-popup-button'
+			'ui':'ui.car.offers.form',
+			'selector':'.car-offers-form'
 		},
 
 	];
