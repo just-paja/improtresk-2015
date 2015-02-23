@@ -5,4 +5,5 @@
 /share/bower
 /lib/vendor
 /.htaccess
+/.rocketeer
 /composer.lock
