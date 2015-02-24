@@ -55,9 +55,15 @@
 		]
 	}, "carshare_feed"],
 
+	["^/autem/detail/([^/]+)$", {
+		"modules":[
+			["car/offer/detail"]
+		]
+	}, "carshare_detail"],
+
 	["^/autem/admin/([^/]+)$", {
 		"modules":[
-			["forms/carshare_admin"]
+			["car/offer/admin"]
 		]
 	}, "carshare_admin"],
 

@@ -12,92 +12,126 @@
 
 				'before_send':function()
 				{
-					this.get_el().trigger('loading', this);
+					var el = this.get_el().trigger('loading', this);
+					el.find('.form-group-typed-buttons').stop(true).slideUp();
+
+					this.get_el('errors').hide();
 					return true;
 				},
 
 				'on_ready':function(err, res)
 				{
-					this.get_el().trigger('loaded', this);
-					v(err, res);
+					var el = this.get_el().trigger('loaded', this);
+
+					if (err) {
+						el.find('.form-group-typed-buttons').stop(true).slideDown();
+						this.get_el('errors')
+							.html('Nepovedlo se nasdílet tuto nabídku. Zkuste to prosím později.')
+							.append(err)
+							.stop(true)
+							.slideDown();
+					} else {
+						this.get_el('form').slideUp(250);
+						this.get_el('result').html('<p class="success">Tvoje nabídka byla uložena. Na e-mail jsme vám poslali potvrzení. Děkujeme.</p>');
+
+						pwf.create('ui.car.offers.item', pwf.merge(this.get_data(), {
+							'parent':this.get_el('result')
+						}));
+
+						this.get_el('result')
+							.stop(true)
+							.slideDown();
+					}
 				},
 
 				'elements':[
 					{
-						'name':'submited',
-						'type':'hidden',
-						'value':true
+						'element':'container',
+						'type':'inputs',
+						'elements':[
+							{
+								'name':'submited',
+								'type':'hidden',
+								'value':true
+							},
+
+							{
+								'name':'driver',
+								'label':'Tvoje jméno',
+								'type':'text',
+								'required':true
+							},
+
+							{
+								'name':'from',
+								'label':'Město',
+								'type':'text',
+								'required':true
+							},
+
+							{
+								'name':'seats',
+								'label':'Počet míst',
+								'type':'number',
+								'min':1,
+								'step':1,
+								'required':true
+							},
+
+							{
+								'name':'departure',
+								'label':'Plánovaný odjezd',
+								'type':'datetime',
+								'required':true
+							},
+
+							{
+								'name':'email',
+								'label':'Tvůj e-mail',
+								'type':'text',
+								'required':true
+							},
+
+							{
+								'name':'icon',
+								'type':'select',
+								'label':'Ikona',
+								'options':[
+									{"name":"sedan","value":"sedan"},
+									{"name":"combi","value":"combi"},
+									{"name":"hatchback","value":"hatchback"},
+									{"name":"hatchback-3d","value":"hatchback-3d"},
+									{"name":"coupe","value":"coupe"},
+									{"name":"van","value":"van"},
+									{"name":"microbus","value":"microbus"},
+									{"name":"cabriolet","value":"cabriolet"},
+									{"name":"mpv","value":"mpv"},
+									{"name":"suv","value":"suv"},
+									{"name":"pickup","value":"pickup"},
+									{"name":"limousine","value":"limousine"},
+									{"name":"tank","value":"tank"}
+								],
+								'required':true
+							},
+
+							{
+								'name':'desc',
+								'label':'Zpráva pro zájemce',
+								'type':'textarea'
+							}
+						]
 					},
 
 					{
-						'name':'driver',
-						'label':'Tvoje jméno',
-						'type':'text',
-						'required':true
-					},
-
-					{
-						'name':'from',
-						'label':'Město',
-						'type':'text',
-						'required':true
-					},
-
-					{
-						'name':'seats',
-						'label':'Počet míst',
-						'type':'number',
-						'min':1,
-						'step':1,
-						'required':true
-					},
-
-					{
-						'name':'departure',
-						'label':'Plánovaný odjezd',
-						'type':'datetime',
-						'required':true
-					},
-
-					{
-						'name':'email',
-						'label':'Tvůj e-mail',
-						'type':'text',
-						'required':true
-					},
-
-					{
-						'name':'icon',
-						'type':'select',
-						'label':'Ikona',
-						'options':[
-							{"name":"sedan","value":"sedan"},
-							{"name":"combi","value":"combi"},
-							{"name":"hatchback","value":"hatchback"},
-							{"name":"hatchback-3d","value":"hatchback-3d"},
-							{"name":"coupe","value":"coupe"},
-							{"name":"van","value":"van"},
-							{"name":"microbus","value":"microbus"},
-							{"name":"cabriolet","value":"cabriolet"},
-							{"name":"mpv","value":"mpv"},
-							{"name":"suv","value":"suv"},
-							{"name":"pickup","value":"pickup"},
-							{"name":"limousine","value":"limousine"},
-							{"name":"tank","value":"tank"}
-						],
-						'required':true
-					},
-
-					{
-						'name':'desc',
-						'label':'Zpráva pro zájemce',
-						'type':'textarea'
-					},
-
-					{
-						'element':'button',
-						'type':'submit',
-						'label':'Vložit'
+						'element':'container',
+						'type':'buttons',
+						'elements':[
+							{
+								'element':'button',
+								'type':'submit',
+								'label':'Vložit'
+							}
+						]
 					}
 				]
 			}
@@ -107,6 +141,8 @@
 			'els':[
 				'heading',
 				'desc',
+				'result',
+				'errors',
 
 				{
 					'name':'form',
@@ -129,9 +165,7 @@
 					'name':'open',
 					'cname':['button'],
 					'html':'Nabídnout místo v autě'
-				},
-
-				'errors'
+				}
 			],
 
 
