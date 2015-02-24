@@ -71,6 +71,7 @@ if ($f->submited()) {
 		$item->save();
 
 		$item->send_notif($response);
+		$data = $item->get_data();
 	} else {
 		$data = $f->get_errors();
 	}

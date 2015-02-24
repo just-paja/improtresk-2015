@@ -35,6 +35,7 @@
 						this.get_el('result').html('<p class="success">Tvoje nabídka byla uložena. Na e-mail jsme vám poslali potvrzení. Děkujeme.</p>');
 
 						pwf.create('ui.car.offers.item', pwf.merge(this.get_data(), {
+							'ident':res.data.ident,
 							'parent':this.get_el('result')
 						}));
 

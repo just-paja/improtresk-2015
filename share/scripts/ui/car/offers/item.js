@@ -27,10 +27,13 @@
 
 			'create_struct':function(p)
 			{
-				this.get_el().addClass(this.get('icon'));
-				this.get_el('vehicle').addClass(this.get('icon'));
-				this.get_el('vehicle.icon').addClass(this.get('icon'));
-				this.get_el('vehicle.seats')
+				var el = this.get_el()
+					.attr('href', '/autem/' + this.get('ident'))
+					.addClass(this.get('icon'));
+
+				el.vehicle.addClass(this.get('icon'));
+				el.vehicle.icon.addClass(this.get('icon'));
+				el.vehicle.seats
 					.html(this.get('seats'))
 					.attr('title', 'Počet míst')
 					.addClass('free');
