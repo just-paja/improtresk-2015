@@ -12,4 +12,39 @@
 			background:rgba(255,255,255,0.15);
 		}
 	}
+
+	.input {
+		.desc {
+			.fix-transition(.2s);
+
+			color:#fff;
+			font-size:14px;
+			line-height:20px;
+			margin-left:160px;
+			padding:5px 0;
+			opacity:.75;
+			width:332px;
+
+			&:hover {
+				opacity:1;
+			}
+		}
+
+		&.input-textarea {
+			label {
+				display:inline-block;
+				width:160px;
+			}
+
+			.input-container {
+				display:inline-block;
+			}
+
+			textarea {
+				resize:vertical;
+				width:300px;
+			}
+
+		}
+	}
 }

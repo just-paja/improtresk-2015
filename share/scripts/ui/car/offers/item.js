@@ -5,6 +5,12 @@
 	pwf.reg_class('ui.car.offers.item', {
 		'parents':['jq.struct'],
 
+		'storage':{
+			'opts':{
+				'tag':'a'
+			}
+		},
+
 
 		'proto':{
 			'els':[

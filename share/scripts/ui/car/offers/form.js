@@ -59,14 +59,16 @@
 								'name':'driver',
 								'label':'Tvoje jméno',
 								'type':'text',
-								'required':true
+								'required':true,
+								'desc':'Stačí přezdívka, která bude použita jako podpis.'
 							},
 
 							{
 								'name':'from',
 								'label':'Město',
 								'type':'text',
-								'required':true
+								'required':true,
+								'desc':'Jméno města, ze kterého budeš vyjíždět.'
 							},
 
 							{
@@ -75,21 +77,26 @@
 								'type':'number',
 								'min':1,
 								'step':1,
-								'required':true
+								'value':1,
+								'required':true,
+								'desc':'Kolik míst v autě nabídneš? Minimum je 1.'
 							},
 
 							{
 								'name':'departure',
 								'label':'Plánovaný odjezd',
 								'type':'datetime',
-								'required':true
+								'required':true,
+								'value':'2015-05-07T13:00:00+02:00',
+								'desc':'Orientační čas tvého odjezdu'
 							},
 
 							{
 								'name':'email',
 								'label':'Tvůj e-mail',
 								'type':'text',
-								'required':true
+								'required':true,
+								'desc':'Na tento e-mail ti budeme posílat automatická upozornění pokud tvoje nabídka vyvolá zájem. Tvoje e-mailová adresa nebude zveřejněna.'
 							},
 
 							{
@@ -117,7 +124,8 @@
 							{
 								'name':'desc',
 								'label':'Zpráva pro zájemce',
-								'type':'textarea'
+								'type':'textarea',
+								'desc':'Pokud chceš sdělit dodatečné informace pro zájemce, tady je k tomu prostor.'
 							}
 						]
 					},
