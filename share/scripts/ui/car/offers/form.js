@@ -8,7 +8,27 @@
 
 		'storage':{
 			'opts':{
+				'action':'/autem/nabidka',
+
+				'before_send':function()
+				{
+					this.get_el().trigger('loading', this);
+					return true;
+				},
+
+				'on_ready':function(err, res)
+				{
+					this.get_el().trigger('loaded', this);
+					v(err, res);
+				},
+
 				'elements':[
+					{
+						'name':'submited',
+						'type':'hidden',
+						'value':true
+					},
+
 					{
 						'name':'driver',
 						'label':'Tvoje jméno',
@@ -40,7 +60,7 @@
 					},
 
 					{
-						'name':'name',
+						'name':'email',
 						'label':'Tvůj e-mail',
 						'type':'text',
 						'required':true
@@ -120,11 +140,11 @@
 				p('create_meta');
 				p('create_form_obj');
 
-				this.get_el('open').bind('click touchend', p, p.get('callbacks.open'));
+				this.get_el('open').bind('click touchend', p, p.get('actions.open'));
 			},
 
 
-			'callbacks':
+			'actions':
 			{
 				'open':function(e)
 				{

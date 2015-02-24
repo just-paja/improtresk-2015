@@ -12,6 +12,7 @@ namespace Car
 			"departure" => array("type" => 'datetime'),
 			"phone"     => array("type" => 'varchar'),
 			"email"     => array("type" => 'email'),
+			"ident"     => array("type" => 'varchar', 'is_unique' => true),
 			"icon"      => array(
 				"type" => 'varchar',
 				"default" => 'sedan',
@@ -40,7 +41,9 @@ namespace Car
 				"is_unsigned" => true,
 				"min" => 1,
 			),
-			"visible" => array('type' => 'bool')
+
+			"visible"    => array('type' => 'bool'),
+			"sent_notif" => array('type' => 'bool'),
 		);
 
 
@@ -60,6 +63,36 @@ namespace Car
 			}
 
 			return $data;
+		}
+
+
+		public function save()
+		{
+			if (!$this->ident) {
+				$this->ident = md5(time());
+			}
+
+			return parent::save();
+		}
+
+
+		public function send_notif(\System\Http\Response $res)
+		{
+			$body = "Ahoj,\n\nzveřejnili jsme tvojí nabídku na sdílení auta. Na níže uvedené adrese uvidíš jestli se někdo přihlásil a můžeš ji editovat nebo smazat. Pokud se někdo na tvoji nabídku ozve, pošleme ti e-mailem upozornění.";
+			$body .= "\n\n";
+			$body .= $res->url_full('carshare_admin', array($this->ident));
+			$body .= "\n\nHezký den,\norganizační tým Improtřesku 2015\n\nhttp://" . $res->request->host . "\nimprotresk@improliga.cz";
+
+			$mail = new \Helper\Offcom\Mail(array(
+				'rcpt'    => array($this->email),
+				'subject' => 'Improtřesk 2015 - Sdílení auta',
+				'message' => $body
+			));
+
+			$mail->send();
+
+			$this->sent_notif = true;
+			$this->save();
 		}
 	}
 }

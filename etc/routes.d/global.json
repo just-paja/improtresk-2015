@@ -47,6 +47,20 @@
 		]
 	}, "carshare"],
 
+	["^/autem/nabidka$", {
+		"title":"Cesta autem - Improtřesk 2015",
+		"format":"json",
+		"modules":[
+			["forms/carshare_feed"]
+		]
+	}, "carshare_feed"],
+
+	["^/autem/admin/([^/]+)$", {
+		"modules":[
+			["forms/carshare_admin"]
+		]
+	}, "carshare_admin"],
+
 	["^/kontakt$", {
 		"title":"Kontakt - Improtřesk 2015",
 		"subtitle":"Kontaktní informace",
