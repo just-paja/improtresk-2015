@@ -1,60 +1,63 @@
 <?
 
-$status = 400;
-$message = 'fill-all-fields';
-$data = null;
+$this->req('id');
 
-$f = $response->form(array(
-	'use_comm' => true,
-));
+$offer = \Car\Offer::find($id);
 
-$f->input(array(
-	'type' => 'int',
-	'name' => 'car',
-	'required' => true
-));
+if ($offer) {
+	$status = 400;
+	$message = 'fill-all-fields';
+	$data = null;
 
-$f->input(array(
-	'type' => 'text',
-	'name' => 'name',
-	'required' => true
-));
-
-$f->input(array(
-	'type' => 'text',
-	'name' => 'phone',
-	'required' => true
-));
-
-$f->input(array(
-	'type' => 'email',
-	'name' => 'email',
-	'required' => true
-));
-
-$f->input(array(
-	'type' => 'textarea',
-	'name' => 'desc',
-	'required' => false
-));
+	$f = $response->form(array(
+		'use_comm' => true,
+	));
 
 
-if ($f->submited()) {
-	if ($f->passed()) {
-		$attrs = $f->get_data();
-		$status = 200;
-		$message = 'saved';
+	$f->input(array(
+		'type' => 'text',
+		'name' => 'name',
+		'required' => true
+	));
 
-		$item = new \Car\Request($attrs);
-		$item->save();
+	$f->input(array(
+		'type' => 'text',
+		'name' => 'phone',
+		'required' => true
+	));
 
-		$item->send_notif($response);
-		$data = $item->get_data();
-	} else {
-		$data = $f->get_errors();
+	$f->input(array(
+		'type' => 'email',
+		'name' => 'email',
+		'required' => true
+	));
+
+	$f->input(array(
+		'type' => 'textarea',
+		'name' => 'desc',
+		'required' => false
+	));
+
+
+	if ($f->submited()) {
+		if ($f->passed()) {
+			$attrs = $f->get_data();
+			$attrs['car'] = $id;
+			$status = 200;
+			$message = 'saved';
+
+			$item = new \Car\Request($attrs);
+			$item->save();
+
+			$item->send_notif($response);
+			$data = $item->get_data();
+		} else {
+			$data = $f->get_errors();
+		}
 	}
-}
 
 
-$response->mime = 'text/html';
-$this->json_response($status, $message, $data);
+	$response->mime = 'text/html';
+	$this->json_response($status, $message, $data);
+
+} else throw new \System\Error\NotFound();

@@ -8,7 +8,7 @@
 
 		'storage':{
 			'opts':{
-				'action':'/autem/poptavka',
+				'action':'/autem/{id}/poptavka',
 
 				'before_send':function()
 				{
@@ -49,10 +49,6 @@
 								'name':'submited',
 								'type':'hidden',
 								'value':true
-							},
-							{
-								'name':'car',
-								'type':'hidden'
 							},
 
 							{
@@ -132,10 +128,10 @@
 
 			'create_struct':function(p)
 			{
+				this.set('action', this.get('action').replace('{id}', this.get_el().attr('data-car-id')));
+
 				p('create_meta');
 				p('create_form_obj');
-
-				this.get_input('car').val(this.get_el().attr('data-car-id'));
 			},
 
 		}
