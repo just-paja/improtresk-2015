@@ -14,6 +14,7 @@ if ($offer) {
 
 	$this->partial('pages/carshare-detail', array(
 		"item"     => $offer,
-		"requests" => $offer->requests->fetch()
+		"free"     => $offer->seats - $offer->requests->where(array('status' => 2))->count(),
+		"requests" => $offer->requests->where(array('status' => array(1,2)))->fetch()
 	));
 } else throw new \System\Error\NotFound();

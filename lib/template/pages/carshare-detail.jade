@@ -12,6 +12,10 @@
 				span.label Čas odjezdu:
 				span.value=$item->departure->format("j.n. H:i")
 
+			li
+				span.label Volná místa:
+				span.value=$free
+
 	if $item->desc
 		.carshare-block
 			h4 Zpráva pro spolucestující
@@ -21,12 +25,22 @@
 		h4 Cestující
 
 		if any($requests)
-			ul.requests
+			ol.requests
 				- foreach $requests as $row
-					li=$row->name
+					li
+						span.rq-name=$row->name
+						span.rq-status
+							if $row->status == 1
+								="(Čeká na potvrzení)"
+							if $row->status == 2
+								="(Potvrzeno)"
 		else
 			p Zatím se nikdo nepřihlásil
 
 	.carshare-block
 		h3 Chci jet taky
-		.car-requests-form(data-car-id=$item->id)
+
+		if $free > 0
+			.car-requests-form(data-car-id=$item->id)
+		else
+			p Tato jízda už je plná
