@@ -1,0 +1,28 @@
+.carshare
+	.carshare-block
+		h3 Detaily jízdy
+		ul.details
+			li
+				span.label Z:
+				span.value=$item->from
+
+			li
+				span.label Čas odjezdu:
+				span.value=$item->departure->format("j.n. H:i")
+
+	if $item->desc
+		.carshare-block
+			h4 Zpráva pro spolucestující
+			.desc=$item->desc
+
+	if any($requests)
+		.carshare-block
+			h4 Přihlášení lidé
+
+			ul.requests
+				- foreach $requests as $row
+					li=$row->name
+
+	.carshare-block
+		h3 Chci jet taky
+		.car-requests-form(data-offer-id=$item->id)

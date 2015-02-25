@@ -18,7 +18,10 @@ pwf.wait_for('module', 'jquery', function() {
 			'ui':'ui.car.offers.form',
 			'selector':'.car-offers-form'
 		},
-
+		{
+			'ui':'ui.car.requests.form',
+			'selector':'.car-requests-form'
+		}
 	];
 
 

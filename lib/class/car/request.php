@@ -31,6 +31,7 @@ namespace Car
 			"status"=> array(
 				"type" => 'int',
 				"is_unsigned" => true,
+				"default" => self::STATUS_NEW,
 				"options" => array(
 					self::STATUS_NEW      => 'car-status-new',
 					self::STATUS_APPROVED => 'car-status-approved',

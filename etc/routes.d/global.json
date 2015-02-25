@@ -55,9 +55,20 @@
 		]
 	}, "carshare_feed"],
 
-	["^/autem/([^/]+)$", {
+	["^/autem/poptavka$", {
+		"title":"Cesta autem - Improtřesk 2015",
+		"format":"json",
 		"modules":[
-			["car/offer/detail"]
+			["forms/carshare_request"]
+		]
+	}, "carshare_feed"],
+
+	["^/autem/([^/]+)$", {
+		"title":"Cesta autem - Improtřesk 2015",
+		"modules":[
+			["car/offer/detail", {
+				"ident":"#{0}"
+			}]
 		]
 	}, "carshare_detail"],
 
