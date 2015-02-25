@@ -1,0 +1,13 @@
+Ahoj,
+
+zveřejnili jsme tvojí nabídku na sdílení auta. Na níže uvedené adrese uvidíš jestli se někdo přihlásil a můžeš ji editovat nebo smazat. Pokud se někdo na tvoji nabídku ozve, pošleme ti e-mailem upozornění.
+
+<?=$admin?>
+
+
+Hezký den,
+organizační tým Improtřesku 2015
+
+<?=$res->request->protocol?>://<?=$res->request->host?>
+
+improtresk@improliga.cz

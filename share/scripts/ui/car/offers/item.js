@@ -28,7 +28,7 @@
 			'create_struct':function(p)
 			{
 				var el = this.get_el()
-					.attr('href', '/autem/' + this.get('ident'))
+					.attr('href', '/autem/' + this.get('id'))
 					.addClass(this.get('icon'));
 
 				el.vehicle.addClass(this.get('icon'));

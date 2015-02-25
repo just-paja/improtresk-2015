@@ -1,10 +1,10 @@
 <?
 
-$this->req('ident');
+$this->req('id');
 
 $offer = \Car\Offer::get_first()
 	->where(array(
-		'ident' => $ident,
+		'id_car_offer' => $id,
 		'visible' => true
 	))
 	->fetch();

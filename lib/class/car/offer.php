@@ -60,6 +60,7 @@ namespace Car
 			if (!$user) {
 				unset($data['phone']);
 				unset($data['email']);
+				unset($data['ident']);
 			}
 
 			return $data;
@@ -78,15 +79,16 @@ namespace Car
 
 		public function send_notif(\System\Http\Response $res)
 		{
-			$body = "Ahoj,\n\nzveřejnili jsme tvojí nabídku na sdílení auta. Na níže uvedené adrese uvidíš jestli se někdo přihlásil a můžeš ji editovat nebo smazat. Pokud se někdo na tvoji nabídku ozve, pošleme ti e-mailem upozornění.";
-			$body .= "\n\n";
-			$body .= $res->url_full('carshare_admin', array($this->ident));
-			$body .= "\n\nHezký den,\norganizační tým Improtřesku 2015\n\nhttp://" . $res->request->host . "\nimprotresk@improliga.cz";
+			$ren = \System\Template\Renderer\Txt::from_response($res);
+			$ren->reset_layout();
+			$ren->partial('mail/car/offer', array(
+				"admin" => $res->url_full('carshare_admin', array($this->ident))
+			));
 
 			$mail = new \Helper\Offcom\Mail(array(
 				'rcpt'    => array($this->email),
 				'subject' => 'Improtřesk 2015 - Sdílení auta',
-				'message' => $body
+				'message' => $ren->render_content()
 			));
 
 			$mail->send();

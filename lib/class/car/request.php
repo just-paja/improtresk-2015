@@ -45,5 +45,28 @@ namespace Car
 		protected static $access = array(
 			'schema' => true
 		);
+
+
+		public function send_notif(\System\Http\Response $res)
+		{
+			$ren = \System\Template\Renderer\Txt::from_response($res);
+			$ren->reset_layout();
+			$ren->partial('mail/car/request', array(
+				"item"  => $this,
+				"offer" => $this->car,
+				"admin" => $res->url_full('carshare_admin', array($this->car->ident))
+			));
+
+			$mail = new \Helper\Offcom\Mail(array(
+				'rcpt'    => array($this->car->email),
+				'subject' => 'Improtřesk 2015 - Sdílení auta',
+				'message' => $ren->render_content()
+			));
+
+			$mail->send();
+
+			$this->sent_notif = true;
+			$this->save();
+		}
 	}
 }

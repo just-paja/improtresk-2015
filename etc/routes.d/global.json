@@ -67,14 +67,16 @@
 		"title":"Cesta autem - Improtřesk 2015",
 		"modules":[
 			["car/offer/detail", {
-				"ident":"#{0}"
+				"id":"#{0}"
 			}]
 		]
 	}, "carshare_detail"],
 
 	["^/autem/([^/]+)/admin$", {
 		"modules":[
-			["car/offer/admin"]
+			["car/offer/admin", {
+				"ident":"#{0}"
+			}]
 		]
 	}, "carshare_admin"],
 

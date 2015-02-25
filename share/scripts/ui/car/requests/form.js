@@ -32,12 +32,7 @@
 							.slideDown();
 					} else {
 						this.get_el('form').slideUp(250);
-						this.get_el('result').html('<p class="success">Tvoje popt8vka byla uložena a byla přeposlána řidiči. Je už na něm, kdy tě bude kontaktovat.</p>');
-
-						pwf.create('ui.car.offers.item', pwf.merge(this.get_data(), {
-							'ident':res.data.ident,
-							'parent':this.get_el('result')
-						}));
+						this.get_el('result').html('<p class="success">Tvoje poptávka byla uložena a byla přeposlána řidiči. Je už na něm, kdy tě bude kontaktovat.</p>');
 
 						this.get_el('result')
 							.stop(true)
@@ -132,6 +127,17 @@
 					]
 				}
 			],
+
+
+
+			'create_struct':function(p)
+			{
+				p('create_meta');
+				p('create_form_obj');
+
+				this.get_input('car').val(this.get_el().attr('data-car-id'));
+			},
+
 		}
 	});
 })();

@@ -1,6 +1,8 @@
 .carshare
 	.carshare-block
 		h3 Detaily jízdy
+
+		.vehicle(class=$item->icon)
 		ul.details
 			li
 				span.label Z:
@@ -15,14 +17,16 @@
 			h4 Zpráva pro spolucestující
 			.desc=$item->desc
 
-	if any($requests)
-		.carshare-block
-			h4 Přihlášení lidé
+	.carshare-block
+		h4 Cestující
 
+		if any($requests)
 			ul.requests
 				- foreach $requests as $row
 					li=$row->name
+		else
+			p Zatím se nikdo nepřihlásil
 
 	.carshare-block
 		h3 Chci jet taky
-		.car-requests-form(data-offer-id=$item->id)
+		.car-requests-form(data-car-id=$item->id)
