@@ -13,6 +13,8 @@
 				"bower/pwf-config",
 				"bower/pwf-storage",
 				"bower/pwf-preloader",
+				"bower/pwf-input-date",
+
 				"bower/pwf-form",
 				"bower/pwf-queue",
 				"bower/pwf-comm",
@@ -22,7 +24,6 @@
 				"bower/pwf-locales",
 
 				"bower/pwf-ui-calendar",
-				"bower/pwf-input-date",
 
 				"bower/pwf-adminer/lib/ext",
 				"bower/pwf-adminer/lib/adminer/abstract/filters",
