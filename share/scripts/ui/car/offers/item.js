@@ -38,7 +38,9 @@
 					.attr('title', 'Počet míst')
 					.addClass('free');
 
-				this.get_el('info.from').html(this.get('from'));
+				this.get_el('info.from')
+					.append(pwf.jquery.span('city').html(this.get('from')))
+					.append(pwf.jquery.span('dest').html(' → Milevsko'));
 				this.get_el('info.departure').html('Odjezd: ' + this.get('departure').format('D.M H:m'));
 				this.get_el('info.driver').html('Řidič: ' + this.get('driver'));
 			}
