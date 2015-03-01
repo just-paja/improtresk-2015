@@ -40,5 +40,7 @@ pwf.wait_for('module', 'jquery', function() {
 				};
 			}(map[i]));
 		}
+
+		pwf.scan();
 	});
 });
