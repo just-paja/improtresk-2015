@@ -11,6 +11,9 @@ foreach ($icons as $icon) {
 	$opts[] = array('value' => $icon, 'name' => $icon);
 }
 
+if (isset($ident)) {
+}
+
 $f = $response->form(array(
 	'use_comm' => true,
 ));
@@ -66,11 +69,24 @@ if ($f->submited()) {
 		$status = 200;
 		$message = 'saved';
 
-		$item = new \Car\Offer($attrs);
+		if ($ident) {
+			$item = \Car\Offer::get_first()->where(array('ident' => $ident))->fetch();
+
+			if (!$item) {
+				throw new \System\Error\NotFound();
+			}
+		} else {
+			$item = new \Car\Offer();
+		}
+
+		$item->update_attrs($attrs);
 		$item->visible = true;
 		$item->save();
 
-		$item->send_notif($response);
+		if (!$item->sent_notif) {
+			$item->send_notif($response);
+		}
+
 		$data = $item->get_data();
 	} else {
 		$data = $f->get_errors();
@@ -79,4 +95,7 @@ if ($f->submited()) {
 
 
 $response->mime = 'text/html';
-$this->json_response($status, $message, $data);
+
+if (!isset($ident) || $f->submited()) {
+	$this->json_response($status, $message, $data);
+}

@@ -13,7 +13,7 @@
 				'before_send':function()
 				{
 					var el = this.get_el().trigger('loading', this);
-					el.find('.form-group-typed-buttons').stop(true).slideUp();
+					//~ el.find('.form-group-typed-buttons').stop(true).slideUp();
 
 					this.get_el('errors').hide();
 					return true;
@@ -32,7 +32,7 @@
 							.slideDown();
 					} else {
 						this.get_el('form').slideUp(250);
-						this.get_el('result').html('<p class="success">Tvoje nabídka byla uložena. Na e-mail jsme vám poslali potvrzení. Děkujeme.</p>');
+						this.get_el('result').html('<p class="success">Tvoje nabídka byla uložena, děkujeme.</p>');
 
 						pwf.create('ui.car.offers.item', pwf.merge(this.get_data(), {
 							'id':res.data.id_car_offer,

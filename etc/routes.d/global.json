@@ -76,7 +76,19 @@
 
 	["^/autem/([^/]+)/admin$", {
 		"modules":[
-			["car/offer/admin", {
+			["car/offer/admin/detail", {
+				"ident":"#{0}"
+			}]
+		]
+	}, "carshare_admin"],
+
+	["^/autem/([^/]+)/admin/edit$", {
+		"modules":[
+			["forms/carshare_feed", {
+				"ident":"#{0}"
+			}],
+
+			["car/offer/admin/edit", {
 				"ident":"#{0}"
 			}]
 		]
