@@ -11,8 +11,7 @@ foreach ($icons as $icon) {
 	$opts[] = array('value' => $icon, 'name' => $icon);
 }
 
-if (isset($ident)) {
-}
+def($ident, null);
 
 $f = $response->form(array(
 	'use_comm' => true,
