@@ -194,6 +194,7 @@
 					if (item) {
 						this.set('data', item.get_data());
 						this.set('action', '');
+						p.storage.opts.elements[1].elements[0].label = 'Aktualizovat';
 					}
 				}
 
@@ -202,6 +203,7 @@
 
 				if (item) {
 					this.get_el('form').show();
+					this.get_el('open').remove();
 				} else {
 					this.get_el('open').bind('click touchend', p, p.get('actions.open'));
 				}
