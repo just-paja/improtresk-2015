@@ -4,7 +4,7 @@
 
 	pwf.reg_class('ui.car.offers.form', {
 		"parents":['form'],
-		'requires':['input.select', 'input.datetime'],
+		'requires':['input.select', 'input.datetime', 'Car.Offer'],
 
 		'storage':{
 			'opts':{
@@ -180,10 +180,31 @@
 
 			'create_struct':function(p)
 			{
+				var
+					id = this.get('id'),
+					item;
+
+				if (!id) {
+					id = this.get_el().attr('data-id');
+				}
+
+				if (id) {
+					item = pwf.get_class('Car.Offer').find_existing(id);
+
+					if (item) {
+						this.set('data', item.get_data());
+						this.set('action', '');
+					}
+				}
+
 				p('create_meta');
 				p('create_form_obj');
 
-				this.get_el('open').bind('click touchend', p, p.get('actions.open'));
+				if (item) {
+					this.get_el('form').show();
+				} else {
+					this.get_el('open').bind('click touchend', p, p.get('actions.open'));
+				}
 			},
 
 
