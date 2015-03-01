@@ -69,11 +69,14 @@ namespace Car
 
 		public function save()
 		{
+			parent::save();
+
 			if (!$this->ident) {
-				$this->ident = md5(time());
+				$this->ident = md5($this->id.'-'.time());
+				$this->save();
 			}
 
-			return parent::save();
+			return $this;
 		}
 
 
