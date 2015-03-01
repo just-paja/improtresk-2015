@@ -1,4 +1,5 @@
 {
 	"default_lang":"cs",
-	"allowed":["cs"]
+	"allowed":["cs"],
+	"autoload":false
 }
