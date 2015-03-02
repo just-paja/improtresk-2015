@@ -21,23 +21,24 @@
 			h4 Zpráva pro spolucestující
 			.desc=$item->desc
 
-	.carshare-block.sep
-		h4 Cestující
+	if $show_rq
+		.carshare-block.sep
+			h4 Cestující
 
-		if any($requests)
-			ol.requests
-				- foreach $requests as $row
-					li
-						span.rq-name=$row->name
-						span.rq-status
-							if $row->status == 1
-								="(Čeká na potvrzení)"
-							if $row->status == 2
-								="(Potvrzeno)"
-		else
-			p Zatím se nikdo nepřihlásil
+			if any($requests)
+				ol.requests
+					- foreach $requests as $row
+						li
+							span.rq-name=$row->name
+							span.rq-status
+								if $row->status == 1
+									="(Čeká na potvrzení)"
+								if $row->status == 2
+									="(Potvrzeno)"
+			else
+				p Zatím se nikdo nepřihlásil
 
-	if $form
+	if $show_form
 		.carshare-block
 			h3 Chci jet taky
 
