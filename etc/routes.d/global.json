@@ -1,128 +1,150 @@
 [
-	["^/$", {
+	{
+		"name":"home",
+		"url":"/",
 		"title":"Improtřesk 2015",
 		"subtitle":"Festival divadelní improvizace",
 		"modules":[
-			["system/partial", {"template":"pages/home"}]
+			["system.partial", {"template":"pages/home"}]
 		]
-	}, "home"],
+	},
 
-	["^/workshopy$", {
+	{
+		"name":"workshops",
+		"url":"/workshopy",
 		"title":"Workshopy - Improtřesk 2015",
 		"subtitle":"Workshopy",
 		"modules":[
-			["system/partial", {"template":"pages/workshops"}]
+			["system.partial", {"template":"pages/workshops"}]
 		]
-	}, "workshops"],
+	},
 
-	["^/pro-ucastniky$", {
+	{
+		"name":"info",
+		"url":"/pro-ucastniky",
 		"title":"Informace pro účastníky - Improtřesk 2015",
 		"subtitle":"Informace pro účastníky",
 		"modules":[
-			["system/partial", {"template":"pages/info"}]
+			["system.partial", {"template":"pages/info"}]
 		]
-	}, "info"],
+	},
 
-	["^/co-je-improtresk$", {
+	{
+		"name":"about",
+		"url":"/co-je-improtresk",
 		"title":"Co je Improtřesk? - Improtřesk 2015",
 		"subtitle":"Co je to Improtřesk?",
 		"modules":[
-			["system/partial", {"template":"pages/about"}]
+			["system.partial", {"template":"pages/about"}]
 		]
-	}, "about"],
+	},
 
-	["^/prihlaska$", {
+	{
+		"name":"signup",
+		"url":"/prihlaska",
 		"title":"Přihláška - Improtřesk 2015",
 		"subtitle":"Přihláška",
 		"modules":[
-			["forms/signup"]
+			["forms.signup"]
 		]
-	}, "signup"],
+	},
 
-	["^/autem$", {
+	{
+		"name":"carshare",
+		"url":"/autem",
 		"title":"Cesta autem - Improtřesk 2015",
 		"subtitle":"Cesta autem",
 		"modules":[
-			["system/partial", {"template":"pages/carshare"}]
+			["system.partial", {"template":"pages/carshare"}]
 		]
-	}, "carshare"],
+	},
 
-	["^/autem/nabidka$", {
+	{
+		"name":"carshare_feed",
+		"url":"/autem/nabidka",
 		"title":"Cesta autem - Improtřesk 2015",
 		"format":"json",
 		"modules":[
-			["forms/carshare_feed"]
+			["car.share"]
 		]
-	}, "carshare_feed"],
+	},
 
-	["^/autem/([^/]+)$", {
+	{
+		"name":"carshare_detail",
+		"url":"/autem/{id:number}",
 		"title":"Cesta autem - Improtřesk 2015",
 		"modules":[
-			["car/offer/detail", {
-				"id":"#{0}"
-			}]
+			["car.offer.detail"]
 		]
-	}, "carshare_detail"],
+	},
 
-	["^/autem/([^/]+)/poptavka$", {
+	{
+		"name":"carshare_request",
+		"url":"/autem/{id:number}/poptavka",
 		"title":"Cesta autem - Improtřesk 2015",
 		"format":"json",
 		"modules":[
-			["forms/carshare_request", {
-				"id":"#{0}"
-			}]
+			["car.request"]
 		]
-	}, "carshare_feed"],
+	},
 
-	["^/autem/([^/]+)/admin$", {
+	{
+		"name":"carshare_admin",
+		"url":"/autem/{ident:varchar}/admin",
 		"modules":[
-			["car/offer/admin/detail", {
-				"ident":"#{0}"
-			}]
-		]
-	}, "carshare_admin"],
-
-	["^/autem/([^/]+)/admin/edit$", {
-		"modules":[
-			["forms/carshare_feed", {
-				"ident":"#{0}"
+			["car.offer.admin.detail", {
+				"module_id":"detail"
 			}],
 
-			["car/offer/admin/edit", {
-				"ident":"#{0}"
-			}]
+			["car.offer.admin.requests", {
+				"module_id":"requests"
+			}, ["detail"]]
 		]
-	}, "carshare_admin"],
+	},
 
-	["^/kontakt$", {
+	{
+		"url":"/autem/{ident:varchar}/admin/edit",
+		"name":"carshare_admin",
+		"modules":[
+			["forms/carshare_feed"],
+			["car/offer/admin/edit"]
+		]
+	},
+
+	{
+		"url":"/kontakt",
+		"name":"contact",
 		"title":"Kontakt - Improtřesk 2015",
 		"subtitle":"Kontaktní informace",
 		"modules":[
-			["system/partial", {"template":"pages/contact"}]
+			["system.partial", {"template":"pages/contact"}]
 		]
-	}, "contact"],
+	},
 
-
-	["^/formulare/koncept$", {
+	{
+		"name":"concept",
+		"url":"/formulare/koncept",
 		"layout":["layout/base"],
 		"modules":[
 			["forms/concept"]
 		]
-	}, "concept"],
+	},
 
-
-	["^/formulare/koncept/feed$", {
+	{
+		"name":"concept_feed",
+		"url":"/formulare/koncept/feed",
 		"format":"json",
 		"modules":[
 			["forms/concept_feed"]
 		]
-	}, "concept_feed"],
+	},
 
-
-	["^/formulare/koncept/vysledky$", {
+	{
+		"name":"concept_results",
+		"url":"/formulare/koncept/vysledky",
 		"layout":["layout/base"],
 		"modules":[
 			["forms/concept_results"]
 		]
-	}, "concept_results"]
+	}
 ]
