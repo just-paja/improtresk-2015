@@ -37,10 +37,11 @@
 		else
 			p Zatím se nikdo nepřihlásil
 
-	.carshare-block
-		h3 Chci jet taky
+	if $form
+		.carshare-block
+			h3 Chci jet taky
 
-		if $free > 0
-			.car-requests-form(data-car-id=$item->id)
-		else
-			p Tato jízda už je plná
+			if $free > 0
+				.car-requests-form(data-car-id=$item->id)
+			else
+				p Tato jízda už je plná
