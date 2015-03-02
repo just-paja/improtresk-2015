@@ -1,6 +1,7 @@
 {
-	"name":"just-paja/fudjan-project",
-	"description":"Backbone for your fudjan projects",
+	"name":"just-paja/improtresk-2015",
+	"private":true,
+	"description":"Website for czech improvisation theatre festival",
 	"license":"GPL-3.0+",
 	"config":{
 		"vendor-dir":"lib/vendor"
