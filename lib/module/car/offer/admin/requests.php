@@ -8,25 +8,21 @@ namespace Module\Car\Offer\Admin
 		public function run()
 		{
 			$offer = $this->req('offer');
-
 			$rqs_new = $offer->requests->where(array('status' => 1))->fetch();
-			$rqs_cur = $offer->requests->where(array('status' => 2))->fetch();
-			$rqs_old = $offer->requests->add_filter(array(
-				'attr'  => 'status',
-				'type'  => 'exact',
-				'exact' => array(3,4)
-			))->fetch();
 
 			if (count($rqs_new) > 0) {
-				$fn = \System\Form::from_module($this);
-				$fn->prefix  = 'n_';
-				$fn->heading = 'Nové žádosti uživatelů';
+				$fn = \System\Form::from_module($this, array(
+					'prefix'  => 'n_',
+					'heading' => 'Nové žádosti uživatelů',
+					'desc'    => 'Vyber si, koho chceš svézt. Změny budou okamžitě propsány a uživatelům bude poslán informativní e-mail s kontaktem na Tebe. Pokud si nejsi jistý, zavolej a nebo napiš.',
+				));
 
 				foreach ($rqs_new as $item) {
 					$fn->input(array(
 						'type'     => 'select',
 						'name'     => 'status_'.$item->id,
 						'label'    => $item->name,
+						'desc'     => 'Telefon: '.$item->phone.', E-mail: '.$item->email,
 						'required' => true,
 						'options'  => array(
 							array('name' => 'Potvrdit', 'value' => 2),
@@ -36,8 +32,37 @@ namespace Module\Car\Offer\Admin
 				}
 
 				$fn->submit('Uložit');
-				$fn->out($this);
+
+				if ($fn->passed()) {
+					$data = $fn->get_data();
+
+					foreach ($rqs_new as $rq) {
+						$name = 'status_'.$rq->id;
+						$stat = $rq->status;
+
+						if (isset($data[$name])) {
+							$stat = $data[$name];
+						}
+
+						$rq->status = $stat;
+						$rq->save();
+					}
+				} else {
+					$fn->out($this);
+				}
 			}
+
+			$rqs_cur = $offer->requests->add_filter(array(
+				'attr'  => 'status',
+				'type'  => 'exact',
+				'exact' => \Car\Request::STATUS_APPROVED
+			))->fetch();
+			$rqs_old = $offer->requests->add_filter(array(
+				'attr'  => 'status',
+				'type'  => 'exact',
+				'exact' => array(3,4)
+			))->fetch();
+
 
 			if (count($rqs_cur) > 1) {
 				$fc = \System\Form::from_module($this);
