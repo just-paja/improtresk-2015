@@ -80,6 +80,13 @@ namespace Car
 		}
 
 
+		public function is_full()
+		{
+			$current = $this->requests->where(array('status' => \Car\Request::STATUS_APPROVED))->count();
+			return $current >= $this->seats;
+		}
+
+
 		public function send_notif(\System\Http\Response $res)
 		{
 			$ren = \System\Template\Renderer\Txt::from_response($res);
@@ -89,9 +96,10 @@ namespace Car
 			));
 
 			$mail = new \Helper\Offcom\Mail(array(
-				'rcpt'    => array($this->email),
-				'subject' => 'Improtřesk 2015 - Sdílení auta',
-				'message' => $ren->render_content()
+				'rcpt'     => array($this->email),
+				'subject'  => 'Improtřesk 2015 - Sdílení auta',
+				'reply_to' => \System\Settings::get('offcom', 'default', 'reply_to'),
+				'message'  => $ren->render_content()
 			));
 
 			$mail->send();

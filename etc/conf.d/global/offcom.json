@@ -1,5 +1,6 @@
 {
 	"default":{
-		"sender":"robot@improtresk.cz"
+		"sender":"robot@improtresk.cz",
+		"reply_to":"improtresk@improliga.cz"
 	}
 }

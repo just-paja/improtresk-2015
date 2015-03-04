@@ -1,22 +1,26 @@
 Ahoj,
 
-<?=$item->name?> projevil zájem o tvojí spolujízdu sdílenou na <?=$rq->host?>. Na níže uvedené adrese můžeš upravovat svojí nabídku. Pokud bude naplněna, zmizí z veřejného seznamu jízd.
-
-E-mail: <?=$item->email?>
-
-Telefon: <?=$item->phone?>
+<?=$item->name?> projevil zájem o zpříjemnění tvojí cesty autem na Improtřesk. Kontaktuj ho na telefonním čísle <?=$item->phone?> nebo na emailu <?=$item->email?> a domluvte se na společném odjezdu.
 
 <?
 	if ($item->desc) {
-		echo $item->desc;
+		echo "Doplňující zpráva od uživatele:\n";
+		echo $item->desc."\n\n";
+	}
+
+	if (!$full) {
+		?>
+		(Tvoje nabídka bude schována v okamžiku, kdy bude naplněna a přestanou ti chodit upozornění.)
+		<?
 	}
 ?>
 
 <?=$admin?>
 
 
-Hezký den,
-organizační tým Improtřesku 2015
+Těšíme se na vás, jeďte bezpečně!
+
+Organizační tým Improtřesku 2015
 
 <?=$res->request->protocol?>://<?=$res->request->host?>
 

@@ -54,13 +54,15 @@ namespace Car
 			$ren->partial('mail/car/request', array(
 				"item"  => $this,
 				"offer" => $this->car,
+				"full"  => $this->car->is_full(),
 				"admin" => $res->url_full('carshare_admin', array($this->car->ident))
 			));
 
 			$mail = new \Helper\Offcom\Mail(array(
-				'rcpt'    => array($this->car->email),
-				'subject' => 'Improtřesk 2015 - Sdílení auta',
-				'message' => $ren->render_content()
+				'rcpt'     => array($this->car->email),
+				'reply_to' => \System\Settings::get('offcom', 'default', 'reply_to'),
+				'subject'  => 'Improtřesk 2015 - Pasažér',
+				'message'  => $ren->render_content()
 			));
 
 			$mail->send();
