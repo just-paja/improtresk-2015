@@ -41,7 +41,7 @@
 				this.get_el('info.from')
 					.append(pwf.jquery.span('city').html(this.get('from')))
 					.append(pwf.jquery.span('dest').html(' → Milevsko'));
-				this.get_el('info.departure').html('Odjezd: ' + this.get('departure').format('D.M H:m'));
+				this.get_el('info.departure').html('Odjezd: ' + this.get('departure').format('D.M H:mm'));
 				this.get_el('info.driver').html('Řidič: ' + this.get('driver'));
 			}
 		}
