@@ -20,10 +20,40 @@
 	},
 
 	{
-		"name":"info",
-		"url":"/pro-ucastniky",
-		"title":"Informace pro účastníky - Improtřesk 2015",
-		"subtitle":"Informace pro účastníky",
+		"name":"accommodation",
+		"url":"/ubytovani",
+		"title":"Ubytování - Improtřesk 2015",
+		"subtitle":"Kde se bude spát",
+		"modules":[
+			["system.partial", {"template":"pages/info"}]
+		]
+	},
+
+	{
+		"name":"fees",
+		"url":"/cena",
+		"title":"Poplatky - Improtřesk 2015",
+		"subtitle":"Kolik se letos platí a za co",
+		"modules":[
+			["system.partial", {"template":"pages/info"}]
+		]
+	},
+
+	{
+		"name":"food",
+		"url":"/jidlo",
+		"title":"Jídlo - Improtřesk 2015",
+		"subtitle":"Co se bude jíst",
+		"modules":[
+			["system.partial", {"template":"pages/info"}]
+		]
+	},
+
+	{
+		"name":"tips",
+		"url":"/tipy",
+		"title":"Tipy - Improtřesk 2015",
+		"subtitle":"Tipy na cestu a v okolí",
 		"modules":[
 			["system.partial", {"template":"pages/info"}]
 		]
