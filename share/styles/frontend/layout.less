@@ -48,6 +48,7 @@
 		}
 
 		.site-menu {
+			.fix-transition(1s);
 			background:rgba(0,0,0,0.5);
 			border-bottom:1px solid #000;
 			border-color:rgba(0,0,0,.9);
@@ -56,6 +57,10 @@
 			right:0;
 			text-align:center;
 			top:0;
+
+			&:hover {
+				background:rgba(0,0,0,1);
+			}
 
 			menu {
 				margin:0 auto;
@@ -87,7 +92,18 @@
 	}
 
 	.content {
+		background:rgba(0,0,0,.35);
 		margin:0 auto;
+		padding:35px 0;
+
+		.content-inner {
+			margin:0 auto;
+			width:640px;
+		}
+
+		*:last-child {
+			margin-bottom:0;
+		}
 
 		p {
 			font-size:18px;

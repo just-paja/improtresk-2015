@@ -15,9 +15,9 @@
 				li
 					a(href=$ren->url('accommodation')) Ubytování
 				li
-					a(href=$ren->url('fees')) Poplatky
-				li
 					a(href=$ren->url('food')) Jídlo
+				li
+					a(href=$ren->url('fees')) Poplatky
 				li
 					a(href=$ren->url('signup')) Přihláška
 				li
@@ -28,5 +28,6 @@
 					a(href=$ren->url('contact')) Kontakt
 
 	.content
-		:php
-			$ren->slot();
+		.content-inner
+			:php
+				$ren->slot();
