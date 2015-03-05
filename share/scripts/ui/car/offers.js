@@ -18,6 +18,10 @@
 					}
 				],
 
+				"sort":[
+					{"attr":"departure"}
+				],
+
 				"ui_filters":[
 					{
 						"name":"filter",
