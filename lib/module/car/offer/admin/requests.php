@@ -12,6 +12,7 @@ namespace Module\Car\Offer\Admin
 
 			if (count($rqs_new) > 0) {
 				$fn = \System\Form::from_module($this, array(
+					'id' => 'new-requests',
 					'prefix'  => 'n_',
 					'heading' => 'Nové žádosti uživatelů',
 					'desc'    => 'Vyber si, koho chceš svézt. Změny budou okamžitě propsány a uživatelům bude poslán informativní e-mail s kontaktem na Tebe. Pokud si nejsi jistý, zavolej a nebo napiš.',
