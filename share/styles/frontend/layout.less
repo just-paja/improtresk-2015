@@ -102,7 +102,7 @@
 			max-width:900px;
 		}
 
-		*:last-child {
+		> *:last-child {
 			margin-bottom:0;
 		}
 
@@ -177,6 +177,26 @@
 			font-size:48px;
 			letter-spacing:-1px;
 			line-height:54px;
+		}
+	}
+}
+
+
+.secondary-menu {
+	margin-bottom:35px;
+	text-align:center;
+
+	li {
+		border-right:1px solid #fff;
+		display:inline-block;
+		line-height:18px;
+		padding:0 10px 0 0;
+		margin:0 10px 0 0;
+
+		&:last-child {
+			padding:0;
+			margin:0;
+			border-right:none;
 		}
 	}
 }

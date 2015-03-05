@@ -15,6 +15,7 @@
 		"title":"Workshopy - Improtřesk 2015",
 		"subtitle":"Workshopy",
 		"modules":[
+			["system.partial", {"template":"partial/info"}],
 			["system.partial", {"template":"pages/workshops"}]
 		]
 	},
@@ -25,6 +26,7 @@
 		"title":"Ubytování - Improtřesk 2015",
 		"subtitle":"Kde se bude spát",
 		"modules":[
+			["system.partial", {"template":"partial/info"}],
 			["system.partial", {"template":"pages/accomodation"}]
 		]
 	},
@@ -35,6 +37,7 @@
 		"title":"Poplatky - Improtřesk 2015",
 		"subtitle":"Kolik se letos platí a za co",
 		"modules":[
+			["system.partial", {"template":"partial/info"}],
 			["system.partial", {"template":"pages/fees"}]
 		]
 	},
@@ -45,6 +48,7 @@
 		"title":"Jídlo - Improtřesk 2015",
 		"subtitle":"Co se bude jíst",
 		"modules":[
+			["system.partial", {"template":"partial/info"}],
 			["system.partial", {"template":"pages/food"}]
 		]
 	},
@@ -55,6 +59,7 @@
 		"title":"Tipy - Improtřesk 2015",
 		"subtitle":"Tipy na cestu a v okolí",
 		"modules":[
+			["system.partial", {"template":"partial/info"}],
 			["system.partial", {"template":"pages/tips"}]
 		]
 	},
@@ -76,6 +81,27 @@
 		"subtitle":"Přihláška",
 		"modules":[
 			["forms.signup"]
+		]
+	},
+
+	{
+		"name":"info",
+		"url":"/pro-ucastniky",
+		"title":"Pro účastníky - Improtřesk 2015",
+		"subtitle":"Program",
+		"modules":[
+			["system.partial", {"template":"partial/info"}],
+			["system.partial", {"template":"pages/info"}]
+		]
+	},
+
+	{
+		"name":"schedule",
+		"url":"/program",
+		"title":"Program - Improtřesk 2015",
+		"subtitle":"Program",
+		"modules":[
+			["system.partial", {"template":"pages/schedule"}]
 		]
 	},
 
