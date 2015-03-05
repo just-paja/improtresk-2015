@@ -62,7 +62,7 @@
 				background:rgba(0,0,0,1);
 			}
 
-			menu {
+			menu.data {
 				margin:0 auto;
 				min-width:640px;
 			}
@@ -71,6 +71,8 @@
 				display:inline-block;
 				list-style:none;
 				margin:0 auto;
+				position:relative;
+				vertical-align:top;
 
 				a {
 					display:block;
@@ -87,6 +89,28 @@
 						background:rgba(255,255,255,.25);
 					}
 				}
+			}
+
+			menu.sub {
+				.fix-transition(1s);
+
+				background:rgba(0,0,0,0.5);
+				display:none;
+				left:0;
+				position:absolute;
+				right:0;
+
+				&:hover {
+					background:rgba(0,0,0,1);
+				}
+
+				li {
+					display:block;
+				}
+			}
+
+			menu.data li:hover menu.sub {
+				display:block;
 			}
 		}
 	}

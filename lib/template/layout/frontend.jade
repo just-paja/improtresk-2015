@@ -5,11 +5,24 @@
 			h2.subtitle!=$res->subtitle
 
 		.site-menu
-			menu
+			menu.data
 				li
 					a(href=$ren->url('home')) Domů
 				li
 					a(href=$ren->url('info')) Pro účastníky
+
+					menu.sub
+						li
+							a(href=$ren->url('workshops')) Workshopy
+						li
+							a(href=$ren->url('accommodation')) Ubytování
+						li
+							a(href=$ren->url('food')) Jídlo
+						li
+							a(href=$ren->url('fees')) Poplatky
+						li
+							a(href=$ren->url('tips')) Tipy
+
 				li
 					a(href=$ren->url('carshare')) Autem
 				li
@@ -18,8 +31,6 @@
 					a(href=$ren->url('about')) Program
 				li
 					a(href=$ren->url('about')) O Improtřesku
-				li
-					a(href=$ren->url('tips')) Tipy
 				li
 					a(href=$ren->url('contact')) Kontakt
 
