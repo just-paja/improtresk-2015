@@ -162,8 +162,8 @@
 		"url":"/autem/{ident:varchar}/admin/edit",
 		"name":"carshare_admin",
 		"modules":[
-			["forms/carshare_feed"],
-			["car/offer/admin/edit"]
+			["car.share"],
+			["car.offer.admin.edit"]
 		]
 	},
 
@@ -182,7 +182,7 @@
 		"url":"/formulare/koncept",
 		"layout":["layout/base"],
 		"modules":[
-			["forms/concept"]
+			["forms.concept"]
 		]
 	},
 
@@ -191,7 +191,7 @@
 		"url":"/formulare/koncept/feed",
 		"format":"json",
 		"modules":[
-			["forms/concept_feed"]
+			["forms.concept_feed"]
 		]
 	},
 
@@ -200,7 +200,7 @@
 		"url":"/formulare/koncept/vysledky",
 		"layout":["layout/base"],
 		"modules":[
-			["forms/concept_results"]
+			["forms.concept_results"]
 		]
 	}
 ]
