@@ -14,6 +14,13 @@
 					{
 						'attr':'seats',
 						'type':'gt',
+						'gt':'used',
+						'self':true
+					},
+
+					{
+						'attr':'seats',
+						'type':'gt',
 						'gt':0
 					}
 				],

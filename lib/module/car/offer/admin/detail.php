@@ -37,8 +37,12 @@ namespace Module\Car\Offer\Admin
 					"item"      => $offer,
 					"free"      => $offer->seats - $offer->requests->where(array('status' => 2))->count(),
 					"show_form" => false,
-					"show_rq"   => false,
-					"requests"  => $offer->requests->where(array('status' => array(1,2)))->fetch(),
+					"show_rq"   => true,
+					"requests"  => $offer->requests->add_filter(array(
+						'attr'  => 'status',
+						'type'  => 'exact',
+						'exact' => array(1,2)
+					))->fetch(),
 				));
 
 			} else throw new \System\Error\NotFound();

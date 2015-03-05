@@ -70,5 +70,40 @@ namespace Car
 			$this->sent_notif = true;
 			$this->save();
 		}
+
+
+		public function send_notif_author(\System\Http\Response $res)
+		{
+			if ($this->status == self::STATUS_APPROVED) {
+				$partial = 'mail/car/approved';
+			} else if ($this->status == self::STATUS_DENIED) {
+				$partial = 'mail/car/denied';
+			} else if ($this->status == self::STATUS_CANCELED) {
+				$partial = 'mail/car/canceled';
+			} else {
+				return $this;
+			}
+
+			$ren = \System\Template\Renderer\Txt::from_response($res);
+			$ren->reset_layout();
+			$ren->partial($partial, array(
+				"item"  => $this,
+				"offer" => $this->car,
+				"full"  => $this->car->is_full(),
+				"admin" => $res->url_full('carshare_admin', array($this->car->ident))
+			));
+
+			$mail = new \Helper\Offcom\Mail(array(
+				'rcpt'     => array($this->email),
+				'reply_to' => $this->car->email,
+				'subject'  => 'Improtřesk 2015 - Odpověď od řidiče',
+				'message'  => $ren->render_content()
+			));
+
+			$mail->send();
+
+			$this->sent_notif = true;
+			$this->save();
+		}
 	}
 }

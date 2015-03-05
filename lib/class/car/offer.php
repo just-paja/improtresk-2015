@@ -42,6 +42,12 @@ namespace Car
 				"min" => 1,
 			),
 
+			"used" => array(
+				"type" => 'int',
+				"is_unsigned" => true,
+				"default" => 0,
+			),
+
 			"visible"    => array('type' => 'bool'),
 			"sent_notif" => array('type' => 'bool'),
 		);
@@ -77,6 +83,18 @@ namespace Car
 			}
 
 			return $this;
+		}
+
+
+		public function update_status()
+		{
+			$this->used = $this->requests->add_filter(array(
+				'attr'  => 'status',
+				'type'  => 'exact',
+				'exact' => \Car\Request::STATUS_APPROVED
+			))->count();
+
+			return $this->save();
 		}
 
 

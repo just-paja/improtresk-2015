@@ -34,7 +34,7 @@
 				el.vehicle.addClass(this.get('icon'));
 				el.vehicle.icon.addClass(this.get('icon'));
 				el.vehicle.seats
-					.html(this.get('seats'))
+					.html(this.get('seats') - this.get('used'))
 					.attr('title', 'Počet míst')
 					.addClass('free');
 

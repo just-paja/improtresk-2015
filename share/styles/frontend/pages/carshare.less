@@ -55,11 +55,19 @@
 }
 
 
-#new-requests {
-	border-top:1px solid #fff;
-	padding-top:35px;
-	margin-top:35px;
+#approved-requests,
+#new-requests
+{
+	border-bottom:1px solid #fff;
+	padding-bottom:35px;
+	margin-bottom:35px;
 	max-width:640px;
+
+	&:last-child {
+		border-bottom:none;
+		padding:0;
+		margin:0;
+	}
 
 	.desc {
 		border-bottom:1px solid #ffd900;

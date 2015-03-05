@@ -47,7 +47,11 @@ namespace Module\Car\Offer\Admin
 
 						$rq->status = $stat;
 						$rq->save();
+						$rq->send_notif_author($this->response);
 					}
+
+					$offer->update_status();
+					$this->flow->redirect($this->response->path);
 				} else {
 					$fn->out($this);
 				}
@@ -58,24 +62,20 @@ namespace Module\Car\Offer\Admin
 				'type'  => 'exact',
 				'exact' => \Car\Request::STATUS_APPROVED
 			))->fetch();
-			$rqs_old = $offer->requests->add_filter(array(
-				'attr'  => 'status',
-				'type'  => 'exact',
-				'exact' => array(3,4)
-			))->fetch();
 
-
-			if (count($rqs_cur) > 1) {
-				$fc = \System\Form::from_module($this);
-				$fc->prefix  = 'c_';
-				$fc->heading = 'Potvrzené žádosti uživatelů';
+			if (count($rqs_cur) > 0) {
+				$fc = \System\Form::from_module($this, array(
+					'id'      => 'approved-requests',
+					'prefix'  => 'c_',
+					'heading' => 'Potvrzené žádosti uživatelů',
+				));
 
 				foreach ($rqs_cur as $item) {
 					$fc->input(array(
 						'type'     => 'select',
 						'name'     => 'status_'.$item->id,
 						'label'    => $item->name,
-						'required' => true,
+						'desc'     => 'Telefon: '.$item->phone.', E-mail: '.$item->email,
 						'options'  => array(
 							array('name' => 'Zrušit', 'value' => 3),
 						)
@@ -83,12 +83,29 @@ namespace Module\Car\Offer\Admin
 				}
 
 				$fc->submit('Uložit');
-				$fc->out($this);
-			}
 
-			$this->partial('pages/carshare-requests', array(
-				"items" => $rqs_old
-			));
+				if ($fc->passed()) {
+					$data = $fc->get_data();
+
+					foreach ($rqs_cur as $rq) {
+						$name = 'status_'.$rq->id;
+						$stat = $rq->status;
+
+						if (isset($data[$name]) && $data[$name]) {
+							$stat = $data[$name];
+						}
+
+						$rq->status = $stat;
+						$rq->save();
+						$rq->send_notif_author($this->response);
+					}
+
+					$offer->update_status();
+					$this->flow->redirect($this->response->path);
+				} else {
+					$fc->out($this);
+				}
+			}
 		}
 	}
 }
