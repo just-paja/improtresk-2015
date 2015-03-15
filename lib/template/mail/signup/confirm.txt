@@ -20,7 +20,7 @@ Workshopy: <?
 ?>
 
 
-Po uhrazení účastnického poplatku budete přiřazen na workshop. Detaily platby jsou níže.
+Po uhrazení účastnického poplatku budete přiřazen na workshop. O přijetí platby tě budeme informovat automatickým e-mailem. Detaily platby jsou níže.
 
 Účet: 2800754192/2010
 Částka: <?= $check->amount ?> Kč
