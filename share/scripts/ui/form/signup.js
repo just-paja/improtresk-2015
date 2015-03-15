@@ -17,6 +17,29 @@
 					}
 				],
 
+				'on_ready':function(err, res) {
+					if (err) {
+						v(err);
+						v(res);
+						alert('Něco selhalo. Zkus to prosím znovu později.');
+					} else {
+						var
+							jobs = [],
+							obj = this;
+
+						jobs.push(function(next) {
+							obj.get_el('form').slideUp(500, next);
+						});
+
+						jobs.push(function(next) {
+							obj.get_el('form').html('Přihláška byla úspěšně odeslána. Potvrzení a její detaily naleznete v e-mailu. Neváhej nás kontaktovat, kdyby se něco zdálo v nepořádku.');
+							obj.get_el('form').slideDown(200, next);
+						});
+
+						pwf.async.series(jobs);
+					}
+				},
+
 				'on_invalid':function(err) {
 					alert('Vyplň prosím všechna pole.');
 				},
