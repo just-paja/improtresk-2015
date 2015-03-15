@@ -16,7 +16,7 @@
 		"subtitle":"Workshopy",
 		"modules":[
 			["system.partial", {"template":"partial/info"}],
-			["system.partial", {"template":"pages/workshops"}]
+			["workshop.browse"]
 		]
 	},
 

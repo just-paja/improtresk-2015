@@ -7,9 +7,11 @@ namespace
 		const SEATS_OPENED = 10;
 
 		protected static $attrs = array(
-			'name'     => array("type" => 'varchar'),
-			'lector'   => array("type" => 'varchar'),
-			'desc'     => array("type" => 'html'),
+			'name'        => array("type" => 'varchar'),
+			'lector'      => array("type" => 'varchar'),
+			'desc'        => array("type" => 'html'),
+			'desc_lector' => array("type" => 'html', "default" => ''),
+			'visible'     => array("type" => 'bool', "default" => true),
 			'opened'   => array("type" => 'int', "default" => self::SEATS_OPENED),
 			'signups'  => array(
 				"type" => 'has_many',
