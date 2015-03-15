@@ -8,6 +8,8 @@ Telefon: <?=$item->phone?>
 
 E-mail: <?=$item->email?>
 
+Obědy: <?=$item->lunch ? 'Ano':'Ne'?>
+
 Workshopy: <?
 	$name = array();
 	$x = 1;
