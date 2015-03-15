@@ -29,7 +29,7 @@ namespace Module\Forms
 			$f->input(array(
 				'name' => 'team',
 				'type' => 'text',
-				'required' => true
+				'required' => false
 			));
 
 			$f->input(array(
