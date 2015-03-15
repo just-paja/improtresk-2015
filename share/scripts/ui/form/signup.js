@@ -94,7 +94,7 @@
 						'element':'container',
 						'type':'workshops',
 						'heading':'Workshopy',
-						'desc':'Vyber si tři workshopy v pořadí podle preferencí. Pokud se naplní první než nám přijde tvoje platba, dáme tě do druhého ...',
+						'desc':'Vyber si tři workshopy v pořadí podle preferencí. Pokud se naplní první než nám přijde tvoje platba, dáme tě do druhého. Pokud se naplní druhý, dáme tě do třetího.',
 						'elements':[
 							{
 								"name":'workshop_0',
