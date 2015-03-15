@@ -23,6 +23,8 @@
 	'after'  => array(
 		'setup'   => array(),
 		'deploy'  => array(
+			'ln -s ~/storage/improtresk-2015/conf.d ./etc/',
+			'ln -s ~/storage/improtresk-2015/var ./var',
 			'./bin/manage db sync',
 			'./bin/manage cache all'
 		),
