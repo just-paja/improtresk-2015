@@ -26,7 +26,7 @@
 			'ln -s /www/site-storage/improtresk-2015/share/bower ./share/bower',
 			'ln -s /www/site-storage/improtresk-2015/conf.d/production ./etc/conf.d/production',
 			'ln -s /www/site-storage/improtresk-2015/var ./var',
-			'echo production > ./etc/conf.d/env'
+			'echo production > ./etc/conf.d/env',
 
 			'./bin/manage db sync',
 			'./bin/manage cache all'
