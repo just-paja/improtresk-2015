@@ -179,6 +179,14 @@
 
 	{
 		"name":"concept",
+		"url":"/formulare/signup",
+		"modules":[
+			["forms.signup"]
+		]
+	},
+
+	{
+		"name":"concept",
 		"url":"/formulare/koncept",
 		"layout":["layout/base"],
 		"modules":[

@@ -4,6 +4,82 @@ namespace Module\Forms
 {
 	class Signup extends \System\Module
 	{
+		public function get_form()
+		{
+			$opts = array();
+			$f = $this->response->form();
+			$ws = \Workshop::get_all();
+
+			foreach ($ws as $w) {
+				$opts[$w->id] = $w->name;
+			}
+
+			$f->input(array(
+				'name' => 'name_first',
+				'type' => 'text',
+				'required' => true
+			));
+
+			$f->input(array(
+				'name' => 'name_last',
+				'type' => 'text',
+				'required' => true
+			));
+
+			$f->input(array(
+				'name' => 'team',
+				'type' => 'text',
+				'required' => true
+			));
+
+			$f->input(array(
+				'name' => 'email',
+				'type' => 'email',
+				'required' => true
+			));
+
+			$f->input(array(
+				'name' => 'phone',
+				'type' => 'text',
+				'required' => true
+			));
+
+			$f->input(array(
+				'name' => 'birthday',
+				'type' => 'text',
+				'required' => true
+			));
+
+			$f->input(array(
+				'name' => 'lunch',
+				'type' => 'checkbox',
+				'required' => false
+			));
+
+			$f->input(array(
+				'name' => 'workshop_0',
+				'type' => 'select',
+				'options' => $opts,
+				'required' => true
+			));
+
+			$f->input(array(
+				'name' => 'workshop_1',
+				'type' => 'select',
+				'options' => $opts,
+				'required' => true
+			));
+
+			$f->input(array(
+				'name' => 'workshop_2',
+				'type' => 'select',
+				'options' => $opts,
+				'required' => true
+			));
+
+			return $f;
+		}
+
 		public function run()
 		{
 			$start = new \DateTime("2015-03-10 17:00:00+01:00");
@@ -13,6 +89,31 @@ namespace Module\Forms
 			$started = $now > $start;
 			$ended   = $now > $end;
 
+			if ($this->request->method == 'post') {
+				$f = $this->get_form();
+
+				if ($f->passed()) {
+					$d = $f->get_data();
+
+					$item = new \Workshop\SignUp($d);
+					$item->workshops = array(
+						$d['workshop_0'],
+						$d['workshop_1'],
+						$d['workshop_2'],
+					);
+
+					$item->save();
+					$item->mail_confirm($this->response);
+
+					return $this->json_response(200, 'saved');
+
+				} else {
+					return $this->json_response(400, 'fill-all-fields', array(
+						'form' => $f->get_data(),
+						'errors' => $f->get_errors()
+					));
+				}
+			}
 
 			$this->partial('forms/signup', array(
 				"start"   => $start,

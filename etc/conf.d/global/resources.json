@@ -48,6 +48,7 @@
 
 	"models":{
 		"public":[
+			"Workshop",
 			"Workshop.Concept",
 			"Car.Offer"
 		]

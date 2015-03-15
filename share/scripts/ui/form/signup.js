@@ -2,31 +2,23 @@
 {
 	"use strict";
 
-	pwf.reg_class('ui.form.signump', {
+	pwf.reg_class('ui.form.signup', {
 		"parents":['model.list', 'form'],
 		'requires':['Workshop'],
 
 		"storage":{
 			"opts":{
-				'action':'/formulare/koncept/feed',
-				'model':'Workshop.Concept',
+				'action':'/formulare/signup',
+				'model':'Workshop',
+				'heading':'Přihláška',
 				'sort':[
 					{
 						'attr':'name',
 					}
 				],
 
-				'on_ready':function(err) {
-					if (err) {
-						this.display_error(err);
-					} else {
-						pwf.storage.store('concept_voted', pwf.moment().format('YYYY-MM-DD HH:mm:ss'));
-						this.display_thanks();
-					}
-				},
-
 				'on_invalid':function(err) {
-					alert('Vyplň.');
+					alert('Vyplň prosím všechna pole.');
 				},
 
 				"elements":[
@@ -41,38 +33,46 @@
 							},
 
 							{
-								'name':'name_first',
-								'type':'text',
-								'label':'Jméno',
-								'required':true
-							},
+								'element':'container',
+								'type':'name',
+								'elements':[
+									{
+										'name':'name_first',
+										'type':'text',
+										'label':'Jméno',
+										'placeholder':'Křestní',
+										'required':true
+									},
 
-							{
-								'name':'name_last',
-								'type':'text',
-								'label':'Příjmení',
-								'required':true
+									{
+										'name':'name_last',
+										'type':'text',
+										'placeholder':'Příjmení',
+										'required':true
+									}
+								]
 							},
 
 							{
 								'name':'team',
 								'type':'text',
-								'label':'Tým',
-								'required':true
+								'label':'Tým'
 							},
 
 							{
 								'name':'email',
 								'type':'email',
 								'label':'Tvůj e-mail',
-								'required':true
+								'required':true,
+								'desc':'Na e-mail ti pošleme potvrzení přihlášky a detaily platby.'
 							},
 
 							{
 								'name':'phone',
 								'type':'text',
 								'label':'Tvoje telefonní číslo',
-								'required':true
+								'required':true,
+								'desc':'Pokud se vyskytne nějaký problém, budeme ti volat.'
 							},
 
 							{
@@ -83,20 +83,103 @@
 							},
 
 							{
-								"name":'workshops',
-								'label':'Vyber tři workshopy',
+								'name':'lunch',
 								'type':'checkbox',
-								'multiple':true,
-								'required':true,
-								'value':[]
+								'label':'Chci obědy (Více o obědech se dočtete v <a href="/jidlo">sekci pro účastníky</a>)'
 							}
 						]
 					},
 
 					{
-						'label':'Poslat',
-						'element':'button',
-						'type':'submit'
+						'element':'container',
+						'type':'workshops',
+						'heading':'Workshopy',
+						'desc':'Vyber si tři workshopy v pořadí podle preferencí. Pokud se naplní první než nám přijde tvoje platba, dáme tě do druhého ...',
+						'elements':[
+							{
+								"name":'workshop_0',
+								'label':'Primární workshop',
+								'type':'select',
+								'required':true,
+								'model':'Workshop',
+								'on_change':function() {
+									var
+										val = this.val(),
+										sel = this.get('form').get_input('workshop_1'),
+										ex  = pwf.get_class('Workshop').get_all_existing(),
+										op  = [];
+
+									for (var i = 0; i < ex.length; i++) {
+										if (ex[i].get('id') != val) {
+											op.push({
+												'name':ex[i].get('name') + ' (' + ex[i].get('lector') + ')',
+												'value':ex[i].get('id')
+											});
+										}
+									}
+
+									sel.set('options', op);
+									sel.get_el('input').html('');
+									sel.job('create_options');
+								}
+							},
+
+							{
+								"name":'workshop_1',
+								'label':'Sekundární workshop',
+								'type':'select',
+								'required':true,
+								'on_change':function() {
+									var
+										val = this.val(),
+										pri = this.get('form').get_input('workshop_0').val(),
+										sel = this.get('form').get_input('workshop_2'),
+										ex  = pwf.get_class('Workshop').get_all_existing(),
+										op  = [];
+
+									for (var i = 0; i < ex.length; i++) {
+										var id = ex[i].get('id');
+
+										if (id != val && id != pri) {
+											op.push({
+												'name':ex[i].get('name') + ' (' + ex[i].get('lector') + ')',
+												'value':ex[i].get('id')
+											});
+										}
+									}
+
+									sel.set('options', op);
+									sel.get_el('input').html('');
+									sel.job('create_options');
+								}
+							},
+
+							{
+								"name":'workshop_2',
+								'label':'Terciální workshop',
+								'type':'select',
+								'required':true
+							}
+						]
+					},
+
+					{
+						'element':'container',
+						'heading':'Odeslání',
+						'desc':'Po úspěšném odeslání ti pošleme potvrzení přihlášky a detaily platby. Tato přihláška je závazná.',
+						'elements':[
+							{
+								'type':'checkbox',
+								'label':'Souhlasím s <a href="/pro-ucastniky">podmínkami pro účastníky</a>',
+								'required':true
+							},
+
+							{
+								'label':'Odeslat',
+								'element':'button',
+								'type':'submit'
+							}
+						]
 					}
 				]
 			}
@@ -106,15 +189,7 @@
 		'proto':{
 			'create_struct':function(p)
 			{
-				var voted = pwf.storage.get('concept_voted');
-
-				if (voted) {
-					p('create_meta');
-					this.get_el('form').hide();
-					this.display_thanks();
-				} else {
-					this.load();
-				}
+				this.load();
 			},
 
 
@@ -125,34 +200,25 @@
 					opts  = [];
 
 				for (var i = 0 ; i < items.length; i++) {
-					var label = pwf.jquery.div('workshop-option');
-
-					label.create_divs(['name', 'desc']);
-
-					label.name.html(items[i].get('name'));
-					label.desc.html(items[i].get('desc'));
-
 					opts.push({
-						'name':label,
+						'name':items[i].get('name') + ' (' + items[i].get('lector') + ')',
 						'value':items[i].get('id')
 					});
 				}
 
-				var other = pwf.jquery.div('workshop-option');
+				var use = p.storage.opts.elements[1].elements;
 
-				other.create_divs(['name', 'desc']);
-
-				other.name.html('Jiný workshop');
-				other.desc.html('Napiš nám vlastní představu workshopu.');
-
-				opts.push({'value':666, 'name':other});
-
-				p.storage.opts.elements[0].elements[3].options = opts;
+				for (var i = 0 ; i < use.length; i++) {
+					if (typeof use[i].model != 'undefined' && use[i].model == 'Workshop') {
+						use[i].options = opts;
+					}
+				}
 
 				p('create_meta');
 				p('create_form_obj');
 
-				this.get_input('workshops').job('change');
+				this.get_input('workshop_0').job('change');
+				this.get_input('workshop_1').job('change');
 			}
 		},
 
