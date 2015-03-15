@@ -23,8 +23,9 @@
 	'after'  => array(
 		'setup'   => array(),
 		'deploy'  => array(
-			'ln -s /www/site-storage/improtresk-2015/conf.d/production ./etc/production',
+			'ln -s /www/site-storage/improtresk-2015/conf.d/production ./etc/conf.d/production',
 			'ln -s /www/site-storage/improtresk-2015/var ./var',
+			'echo production > ./etc/conf.d/env'
 
 			'./bin/manage db sync',
 			'./bin/manage cache all'
