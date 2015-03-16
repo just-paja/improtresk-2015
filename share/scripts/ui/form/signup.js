@@ -108,7 +108,8 @@
 							{
 								'name':'lunch',
 								'type':'checkbox',
-								'label':'Chci obědy (Více o obědech se dočtete v <a href="/jidlo">sekci pro účastníky</a>)'
+								'label':'Chci obědy <span style="font-size:14px">+180 Kč</span>',
+								'desc':'Více o obědech se dočtete v <a href="/jidlo">sekci pro účastníky</a>'
 							}
 						]
 					},
