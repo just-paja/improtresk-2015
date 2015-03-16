@@ -4,7 +4,7 @@ namespace
 {
 	class Workshop extends \System\Model\Perm
 	{
-		const SEATS_OPENED = 10;
+		const SEATS_OPENED = 12;
 
 		protected static $attrs = array(
 			'name'        => array("type" => 'varchar'),
