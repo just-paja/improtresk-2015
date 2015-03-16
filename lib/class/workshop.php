@@ -13,6 +13,12 @@ namespace
 			'desc_lector' => array("type" => 'html', "default" => ''),
 			'visible'     => array("type" => 'bool', "default" => true),
 			'opened'   => array("type" => 'int', "default" => self::SEATS_OPENED),
+
+			'photos'  => array(
+				"type" => 'has_many',
+				"model" => 'Workshop\Photo',
+			),
+
 			'signups'  => array(
 				"type" => 'has_many',
 				"model" => 'Workshop\SignUp',

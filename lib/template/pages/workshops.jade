@@ -7,3 +7,13 @@
 
 			h4=$ws->lector
 			.desc-lector!=$ws->desc_lector
+
+			:php
+				$photos = $ws->photos->fetch();
+
+			if $photos
+				ul.photos
+					- foreach $photos as $p
+						li
+							a.photo(href=$p->image->get_url())
+								img(src=$p->image->thumb(120, 120), alt=$p->desc)
