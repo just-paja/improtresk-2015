@@ -6,8 +6,10 @@ namespace Workshop
 	{
 		protected static $attrs = array(
 			'currency' => array("type" => 'varchar', "default" => 'CZK'),
-			'symvar' => array("type" => 'int', "is_unsigned" => true),
-			'amount' => array("type" => 'float'),
+			'symvar'  => array("type" => 'int', "is_unsigned" => true),
+			'amount'  => array("type" => 'float'),
+			'is_paid' => array("type" => 'bool'),
+			'is_over' => array("type" => 'bool'),
 
 			'signup' => array(
 				"type" => 'belongs_to',
@@ -41,6 +43,29 @@ namespace Workshop
 				$this->symvar = self::create_symvar($this->id);
 				$this->save();
 			}
+		}
+
+
+		public function update_ballance()
+		{
+			$payments = $this->payments->fetch();
+			$paid = 0;
+
+			foreach ($payments as $p) {
+				$paid += $p->amount;
+			}
+
+			if ($paid >= $this->amount) {
+				$this->is_paid = true;
+
+				if ($paid > $this->amount) {
+					$this->is_over = true;
+				}
+			} else {
+				$this->is_paid = false;
+			}
+
+			return $this->save();
 		}
 	}
 }

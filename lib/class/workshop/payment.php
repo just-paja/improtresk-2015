@@ -6,8 +6,9 @@ namespace Workshop
 	{
 		const FORMAT_DATE = 'Y-m-dO';
 
-		const FEED_KEY_LIST  = 'transactionList';
-		const FEED_KEY_MOVES = 'transaction';
+		const FEED_KEY_ACCOUNT  = 'accountStatement';
+		const FEED_KEY_LIST     = 'transactionList';
+		const FEED_KEY_MOVES    = 'transaction';
 
 		protected static $pairs = array(
 			array(
@@ -85,17 +86,23 @@ namespace Workshop
 
 		public static function pair_with_feed(array $feed)
 		{
-			if (!array_key_exists(self::FEED_KEY_LIST, $feed) || !is_array($feed[self::FEED_KEY_LIST])) {
+			if (!array_key_exists(self::FEED_KEY_ACCOUNT, $feed) || !is_array($feed[self::FEED_KEY_ACCOUNT])) {
+				throw new \System\Error\Argument('Invalid feed format', self::FEED_KEY_ACCOUNT);
+			}
+
+			$stat = $feed[self::FEED_KEY_ACCOUNT];
+
+			if (!array_key_exists(self::FEED_KEY_LIST, $stat) || !is_array($stat[self::FEED_KEY_LIST])) {
 				throw new \System\Error\Argument('Invalid feed format', self::FEED_KEY_LIST);
 			}
 
-			$list = $feed[self::FEED_KEY_LIST];
+			$list = $stat[self::FEED_KEY_LIST];
 
-			if (!array_key_exists(self::FEED_KEY_MOVES, $lsit) || !is_array($lsit[self::FEED_KEY_MOVES])) {
+			if (!array_key_exists(self::FEED_KEY_MOVES, $list) || !is_array($list[self::FEED_KEY_MOVES])) {
 				throw new \System\Error\Argument('Invalid feed format', self::FEED_KEY_MOVES);
 			}
 
-			foreach ($list as $item) {
+			foreach ($list[self::FEED_KEY_MOVES] as $item) {
 				self::pair_with_transaction($item);
 			}
 		}
@@ -105,7 +112,10 @@ namespace Workshop
 		{
 			$trans = self::transaction_to_assoc($item);
 
-			if (isset($trans['ident']) || isset($trans['symvar'])) {
+			if (empty($trans['ident']) || empty($trans['symvar'])) {
+				v($trans);
+
+				//~ throw new \System\Error('No ident or symvar');
 				// Ignored - not an interesting payment
 				return;
 			}
@@ -116,22 +126,37 @@ namespace Workshop
 			))->fetch();
 
 			if ($match) {
-				// Ignored - transaction already paired
-				return;
+				$item = $match;
+			} else {
+				$item = new self($trans);
 			}
 
-			$check = \Workshop\Check::get_first()->where(array(
-				"symvar" => $trans['symvar']
-			))->fetch();
+			if ($item->id && $item->check) {
+				if ($item->check->is_paid) {
+					// Ignored - transaction already paired with check and check is paid
+					return;
+				}
 
-			if (!$check) {
+				$check = $item->check;
+			} else {
+				$check = \Workshop\Check::get_first()->where(array(
+					"symvar" => $item->symvar
+				))->fetch();
+			}
+
+			if ($check) {
+				$item->check = $check;
+			} else {
 				// Ignored - transaction without check
-				return;
+				//~ return;
+				// No. Save payment with no checks.
 			}
 
-			$item = new self($trans);
-			$item->check = $check;
 			$item->save();
+
+			if ($check && !$check->is_paid) {
+				$item->check->update_ballance();
+			}
 		}
 
 
@@ -145,7 +170,7 @@ namespace Workshop
 				if (array_key_exists($name, $item)) {
 					$col = $item[$name];
 
-					if (is_array($col) && array_key_exists($col['value'])) {
+					if (is_array($col) && array_key_exists('value', $col)) {
 						$assoc[$pair['attr']] = $col['value'];
 					}
 				}
