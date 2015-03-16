@@ -1,8 +1,21 @@
 [
 	{
-		"title":"Workshop concepts",
+		"title":"Ankety",
+		"items":[
+			{
+				"title":"Workshopy",
+				"opts":{
+					"model":"Workshop.Concept"
+				}
+			}
+		]
+	},
+
+	{
+		"title":"Workshopy",
 		"opts":{
-			"model":"Workshop.Concept"
+			"model":"Workshop",
+			"attrs_list":["name", "lector", "visible", "updated_at"]
 		}
 	},
 
