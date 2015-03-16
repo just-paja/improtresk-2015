@@ -224,3 +224,33 @@
 		}
 	}
 }
+
+
+.partners {
+	bottom:10px;
+	left:10px;
+	position:fixed;
+	right:10px;
+	text-align:center;
+
+	.partner {
+		display:inline-block;
+		height:80px;
+		margin-right:25px;
+		vertical-align:bottom;
+		width:80px;
+
+		&:last-child {
+			margin:0;
+		}
+
+		&.kdm {
+			background-image:url(<pixmap(logo/kd-milevsko.png)>);
+			width:180px;
+		}
+
+		&.ii {
+			background-image:url(<pixmap(logo/impro-institut.png)>);
+		}
+	}
+}
