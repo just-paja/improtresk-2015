@@ -12,8 +12,10 @@ namespace Workshop
 
 		protected static $pairs = array(
 			array(
-				"col"  => '0',
-				"attr" => 'received'
+				"col"    => '0',
+				"attr"   => 'received',
+				"type"   => 'date',
+				"format" => self::FORMAT_DATE,
 			),
 
 			array(
@@ -52,6 +54,11 @@ namespace Workshop
 			),
 
 			array(
+				"col"  => '16',
+				"attr" => 'message'
+			),
+
+			array(
 				"col"  => '22',
 				"attr" => 'ident'
 			),
@@ -69,6 +76,7 @@ namespace Workshop
 			'message'  => array("type" => 'varchar', "is_null" => true),
 			'currency' => array("type" => 'varchar', "is_null" => true),
 			'received' => array("type" => 'datetime', "is_null" => true),
+			'message'  => array("type" => 'text', "is_null" => true),
 
 			'check' => array(
 				"type" => 'belongs_to',
@@ -113,8 +121,6 @@ namespace Workshop
 			$trans = self::transaction_to_assoc($item);
 
 			if (empty($trans['ident']) || empty($trans['symvar'])) {
-				v($trans);
-
 				//~ throw new \System\Error('No ident or symvar');
 				// Ignored - not an interesting payment
 				return;
@@ -171,7 +177,15 @@ namespace Workshop
 					$col = $item[$name];
 
 					if (is_array($col) && array_key_exists('value', $col)) {
-						$assoc[$pair['attr']] = $col['value'];
+						$val = $col['value'];
+
+						if (isset($pair['type'])) {
+							if (isset($pair['type']) == 'date') {
+								$assoc[$pair['attr']] = \DateTime::createFromFormat($pair['format'], $val);
+							}
+						} else {
+							$assoc[$pair['attr']] = $val;
+						}
 					}
 				}
 			}

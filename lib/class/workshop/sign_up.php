@@ -120,5 +120,43 @@ namespace Workshop
 			$this->sent_notif = true;
 			$this->save();
 		}
+
+
+		public function mail_payment_update()
+		{
+			$check = $this->check;
+
+			if (!$check) {
+				return;
+			}
+
+			$payments = $check->payments->fetch();
+			$paid = 0;
+
+			foreach ($payments as $p) {
+				$paid += $p->amount;
+			}
+
+			$ren = new \System\Template\Renderer\Txt();
+			$ren->reset_layout();
+			$ren->partial('mail/signup/payment-update', array(
+				"item" => $this,
+				"check" => $check,
+				"paid"  => $paid,
+				"payments" => $payments
+			));
+
+			$mail = new \Helper\Offcom\Mail(array(
+				'rcpt'     => array($this->email),
+				'subject'  => 'Improtřesk 2015 - Přihláška, platební aktualizace',
+				'reply_to' => \System\Settings::get('offcom', 'default', 'reply_to'),
+				'message'  => $ren->render_content()
+			));
+
+			$mail->send();
+
+			$this->sent_notif = true;
+			$this->save();
+		}
 	}
 }

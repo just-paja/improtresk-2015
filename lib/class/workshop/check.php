@@ -8,8 +8,10 @@ namespace Workshop
 			'currency' => array("type" => 'varchar', "default" => 'CZK'),
 			'symvar'  => array("type" => 'int', "is_unsigned" => true),
 			'amount'  => array("type" => 'float'),
+
 			'is_paid' => array("type" => 'bool'),
 			'is_over' => array("type" => 'bool'),
+			'paid_on' => array("type" => 'datetime', "is_null" => true),
 
 			'signup' => array(
 				"type" => 'belongs_to',
@@ -58,6 +60,10 @@ namespace Workshop
 			if ($paid >= $this->amount) {
 				$this->is_paid = true;
 
+				if (!$this->paid_on) {
+					$this->paid_on = new \DateTime();
+				}
+
 				if ($paid > $this->amount) {
 					$this->is_over = true;
 				}
@@ -65,7 +71,13 @@ namespace Workshop
 				$this->is_paid = false;
 			}
 
-			return $this->save();
+			$this->save();
+
+			if (any($payments)) {
+				$this->signup->mail_payment_update();
+			}
+
+			return $this;
 		}
 	}
 }
