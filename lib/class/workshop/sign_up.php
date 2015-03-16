@@ -56,7 +56,6 @@ namespace Workshop
 		protected static $access = array(
 			"browse" => true,
 			"schema" => true,
-			"create" => true,
 		);
 
 
