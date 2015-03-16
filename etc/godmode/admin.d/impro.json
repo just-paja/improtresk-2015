@@ -5,6 +5,7 @@
 			"model":"Workshop.Concept"
 		}
 	},
+
 	{
 		"title":"Nabídky spolujízdy",
 		"opts":{
@@ -12,6 +13,15 @@
 			"attrs_list":["id", "from", "driver", "seats", "icon", "visible", "created_at"],
 			"attrs_edit":["color", "seats", "icon", "desc", "driver", "from", "departure", "phone", "email", "visible"],
 			"attrs_create":["color", "seats", "icon", "desc", "driver", "from", "departure", "phone", "email", "visible"]
+		}
+	},
+
+	{
+		"title":"Přihlášky",
+		"opts":{
+			"model":"Workshop.SignUp",
+			"attrs_list":["name_first", "name_last", "team", "email", "lunch", "created_at"],
+			"attrs_info":["id", "name_first", "name_last", "team", "email", "phone", "lunch", "check", "workshops", "created_at"]
 		}
 	}
 ]
