@@ -6,7 +6,7 @@ namespace Workshop
 	{
 		const PRICE_DISCOUNT = 1200;
 		const PRICE_FULL     = 1400;
-		const PRICE_LUNCH    = 90;
+		const PRICE_LUNCH    = 180;
 
 		const DEADLINE_DISCOUNT = '2015-04-01';
 
@@ -44,6 +44,7 @@ namespace Workshop
 			),
 
 			'workshops'  => array(
+				"bound_to" => 'signups',
 				"type" => 'has_many',
 				"model" => 'Workshop',
 				"is_bilinear" => true,
