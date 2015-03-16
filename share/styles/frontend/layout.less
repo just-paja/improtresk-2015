@@ -29,6 +29,8 @@
 }
 
 .frontend {
+	margin-bottom:30px;
+
 	header {
 		display:block;
 		padding-top:125px;
@@ -227,26 +229,33 @@
 
 
 .partners {
-	bottom:10px;
-	left:10px;
-	position:fixed;
-	right:10px;
+	margin-bottom:30px;
 	text-align:center;
 
 	.partner {
+	.fix-transition(.2s);
 		display:inline-block;
-		height:80px;
+		height:60px;
 		margin-right:25px;
+		opacity:.65;
 		vertical-align:bottom;
-		width:80px;
+		width:60px;
 
 		&:last-child {
 			margin:0;
 		}
 
+		&:hover {
+			opacity:1;
+		}
+
+		&.il {
+			background-image:url(<pixmap(logo/improliga.png)>);
+		}
+
 		&.kdm {
 			background-image:url(<pixmap(logo/kd-milevsko.png)>);
-			width:180px;
+			width:135px;
 		}
 
 		&.ii {
