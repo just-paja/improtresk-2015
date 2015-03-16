@@ -33,8 +33,13 @@
 		"title":"Přihlášky",
 		"opts":{
 			"model":"Workshop.SignUp",
-			"attrs_list":["name_first", "name_last", "team", "email", "lunch", "created_at"],
-			"attrs_info":["id", "name_first", "name_last", "team", "email", "phone", "lunch", "check", "workshops", "created_at"]
+			"ui_filters":[
+				"paid"
+			],
+
+			"attrs_list":["name_first", "name_last", "team", "email", "lunch", "paid", "solved", "created_at"],
+			"attrs_info":["id", "name_first", "name_last", "team", "email", "phone", "lunch", "paid", "solved", "check", "workshops", "created_at"],
+			"attrs_edit":["team", "email", "phone", "lunch", "solved"]
 		}
 	}
 ]

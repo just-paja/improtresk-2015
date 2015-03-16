@@ -36,7 +36,10 @@ namespace Workshop
 			'email'      => array("type" => 'email'),
 			'phone'      => array("type" => 'varchar'),
 			'birthday'   => array("type" => 'varchar'),
+
 			'lunch'      => array("type" => 'bool'),
+			'paid'       => array("type" => 'bool'),
+			'solved'     => array("type" => 'bool'),
 
 			'check'      => array(
 				"type" => 'has_one',
@@ -118,6 +121,15 @@ namespace Workshop
 
 			$this->sent_notif = true;
 			$this->save();
+		}
+
+
+		public function update_ballance()
+		{
+			$this->paid = $this->check->is_paid;
+			$this->save();
+
+			return $this;
 		}
 
 

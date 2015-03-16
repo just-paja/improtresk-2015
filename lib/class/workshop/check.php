@@ -74,7 +74,7 @@ namespace Workshop
 			$this->save();
 
 			if (any($payments)) {
-				$this->signup->mail_payment_update();
+				$this->signup->update_ballance()->mail_payment_update();
 			}
 
 			return $this;
