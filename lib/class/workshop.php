@@ -14,9 +14,10 @@ namespace
 			'visible'     => array("type" => 'bool', "default" => true),
 			'opened'   => array("type" => 'int', "default" => self::SEATS_OPENED),
 
-			'photos'  => array(
-				"type" => 'has_many',
-				"model" => 'Workshop\Photo',
+			'assignees' => array(
+				"bound_to" => 'assigned_to',
+				"type"     => 'has_many',
+				"model"    => 'Workshop\SignUp'
 			),
 
 			'signups'  => array(
@@ -26,10 +27,9 @@ namespace
 				"is_master" => false
 			),
 
-			'assignees' => array(
-				"bound_to" => 'assigned_to',
-				"type"     => 'has_many',
-				"model"    => 'Workshop\SignUp'
+			'photos'  => array(
+				"type" => 'has_many',
+				"model" => 'Workshop\Photo',
 			),
 		);
 

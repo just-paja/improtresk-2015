@@ -210,5 +210,13 @@
 		"modules":[
 			["forms.concept_results"]
 		]
+	},
+
+	{
+		"name":"concept_results",
+		"url":"/data/workshopy",
+		"modules":[
+			["stats.workshops"]
+		]
 	}
 ]

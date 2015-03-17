@@ -12,6 +12,18 @@
 	"model-Car.Offer-attr-requests":"Pasažéři",
 
 
+	"model-Workshop":"Workshop",
+	"model-Workshop-plural":"Workshopy",
+
+	"model-Workshop-attr-lector":"Lektor",
+	"model-Workshop-attr-desc":"Anotace",
+	"model-Workshop-attr-desc_lector":"Anotace lektora",
+	"model-Workshop-attr-opened":"Otevřená místa",
+	"model-Workshop-attr-photos":"Fotky",
+	"model-Workshop-attr-assignees":"Účastníci",
+	"model-Workshop-attr-signups":"Přihlášky",
+
+
 	"model-Workshop.SignUp":"Přihláška",
 	"model-Workshop.SignUp-plural":"Přihlášky",
 
