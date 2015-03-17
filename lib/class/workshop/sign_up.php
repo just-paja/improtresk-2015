@@ -4,6 +4,7 @@ namespace Workshop
 {
 	class SignUp extends \System\Model\Perm
 	{
+		const USE_INITIAL_DATA = true;
 		const PRICE_DISCOUNT = 1200;
 		const PRICE_FULL     = 1400;
 		const PRICE_LUNCH    = 180;
@@ -53,6 +54,13 @@ namespace Workshop
 				"is_bilinear" => true,
 				"is_master" => true
 			),
+
+			'assigned_to' => array(
+				"bound_to" => 'assignees',
+				"type"     => 'belongs_to',
+				"model"    => 'Workshop',
+				"is_null"  => true
+			),
 		);
 
 
@@ -69,6 +77,77 @@ namespace Workshop
 			if (!$this->check) {
 				$this->create_check();
 			}
+
+			if ($this->solved) {
+				$this->mail_reassignment($this->get_reassignment_op());
+			}
+
+			return $this;
+		}
+
+
+		public function get_reassignment_op()
+		{
+			$ass_ini = null;
+			$ass = $this->assigned_to;
+			$notify = null;
+
+			if (isset($this->data_initial['id_assigned_to'])) {
+				$ass_ini = $this->data_initial['id_assigned_to'];
+			}
+
+			if (!$ass_ini && $ass) {
+				$notify = 'assigned';
+			} else if ($ass_ini && !$ass) {
+				$notify = 'removed';
+			} else if ($ass_ini && $ass) {
+				$id_new = $ass;
+
+				if ($ass instanceof \Workshop) {
+					$id_new = $ass->id;
+				}
+
+				if ($ass_ini != $id_new) {
+					$notify = 'reassigned';
+				}
+			}
+
+			return $notify;
+		}
+
+
+		public function mail_reassignment($op)
+		{
+			$prev = null;
+
+			if (!$op) {
+				return $this;
+			}
+
+			if (isset($this->data_initial['id_assigned_to'])) {
+				$prev = \Workshop::find($this->data_initial['id_assigned_to']);
+			}
+
+			$pref = $this->workshops->sort_by('id_workshop_signup_has_workshop')->fetch();
+
+			$ren = new \System\Template\Renderer\Txt();
+			$ren->reset_layout();
+			$ren->partial('mail/signup/assignment', array(
+				"item" => $this,
+				"op"   => $op,
+				"ws"   => $this->assigned_to,
+				"prev" => $prev,
+				"pref" => $pref,
+			));
+
+			$mail = new \Helper\Offcom\Mail(array(
+				'rcpt'     => array($this->email),
+				'subject'  => 'Improtřesk 2015 - Přihláška, zařazení na workshop',
+				'reply_to' => \System\Settings::get('offcom', 'default', 'reply_to'),
+				'message'  => $ren->render_content()
+			));
+
+			$mail->send();
 		}
 
 

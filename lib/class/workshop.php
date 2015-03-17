@@ -25,6 +25,12 @@ namespace
 				"is_bilinear" => true,
 				"is_master" => false
 			),
+
+			'assignees' => array(
+				"bound_to" => 'assigned_to',
+				"type"     => 'has_many',
+				"model"    => 'Workshop\SignUp'
+			),
 		);
 
 
