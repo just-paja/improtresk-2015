@@ -27,15 +27,15 @@
 			.value.big=$stats['received_cnt']
 
 		.stat
-			.name Přijato peněz
-			.value.unit.big!=$stats['received_sum'].' <span class="unit">Kč</span>'
-
-		.stat
 			.name Očekávano plateb
 			.value.big=$stats['expected_cnt']
 
 		.stat
-			.name Očekávaná částka
+			.name Přijato peněz
+			.value.unit.big!=$stats['received_sum'].' <span class="unit">Kč</span>'
+
+		.stat
+			.name Očekávano peněz
 			.value.unit.big!=$stats['expected_sum'].' <span class="unit">Kč</span>'
 
 	.site-summary.stat-list
