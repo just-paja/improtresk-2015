@@ -41,5 +41,15 @@
 			"attrs_info":["id", "name_first", "name_last", "team", "email", "phone", "lunch", "paid", "solved", "check", "workshops", "created_at"],
 			"attrs_edit":["team", "email", "phone", "lunch", "solved"]
 		}
+	},
+
+	{
+		"title":"Přijaté platby",
+		"opts":{
+			"model":"Workshop.Payment",
+
+			"attrs_list":["bank", "from", "amount", "currency", "symvar", "received", "created_at"],
+			"attrs_edit":["symvar", "received", "check"]
+		}
 	}
 ]
