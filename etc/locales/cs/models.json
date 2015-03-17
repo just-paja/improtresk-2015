@@ -15,6 +15,7 @@
 	"model-Workshop.SignUp":"Přihláška",
 	"model-Workshop.SignUp-plural":"Přihlášky",
 
+	"model-Workshop.SignUp-attr-assigned_to":"Workshop",
 	"model-Workshop.SignUp-attr-name_first":"Jméno",
 	"model-Workshop.SignUp-attr-name_last":"Příjmení",
 	"model-Workshop.SignUp-attr-team":"Tým",
