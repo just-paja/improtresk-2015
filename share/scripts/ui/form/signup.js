@@ -241,10 +241,27 @@
 				}
 
 				p('create_meta');
-				p('create_form_obj');
 
-				this.get_input('workshop_0').job('change');
-				this.get_input('workshop_1').job('change');
+				if (opts.length > 0) {
+					p('create_form_obj');
+
+					this.get_input('workshop_0').job('change');
+					this.get_input('workshop_1').job('change');
+
+					if (opts.length < 2) {
+						this.get_input('workshop_1')
+							.set('required', false)
+							.get_el().remove();
+					}
+
+					if (opts.length < 3) {
+						this.get_input('workshop_2')
+							.set('required', false)
+							.get_el().remove();
+					}
+				} else {
+					this.get_el('form').html('Bohužel, všechny workshopy jsou už obsazené.');
+				}
 			}
 		},
 
