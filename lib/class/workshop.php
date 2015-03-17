@@ -38,5 +38,14 @@ namespace
 			"browse" => true,
 			"schema" => true,
 		);
+
+
+		public function to_object_with_perms(\System\User $user)
+		{
+			$data = parent::to_object_with_perms($user);
+			$data['free'] = $this->opened - $this->assignees->count();
+
+			return $data;
+		}
 	}
 }
