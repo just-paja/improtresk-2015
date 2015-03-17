@@ -215,6 +215,7 @@
 	{
 		"name":"concept_results",
 		"url":"/data/workshopy",
+		"subtitle":"S kým budete na workshopu",
 		"modules":[
 			["stats.workshops"]
 		]
