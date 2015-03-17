@@ -59,14 +59,27 @@
 		}
 
 		.value {
+			text-align:right;
 			width:50px;
 
 			&.big {
+				padding-right:20px;
 				width:100px;
+
+				&.unit {
+					padding-right:0;
+					width:120px;
+				}
 			}
 
 			&.light {
 				opacity:.5;
+			}
+
+			.unit {
+				display:inline-block;
+				text-align:left;
+				width:18px;
 			}
 		}
 	}

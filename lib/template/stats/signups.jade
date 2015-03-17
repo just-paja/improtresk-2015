@@ -1,5 +1,7 @@
 .stats
 	.site-summary.stat-list
+		p Toto je malý přehled celkového stavu přihlášek a plateb.
+
 		.stat
 			.name Celkem přihlášek
 			.value.big=$stats['total']
@@ -20,7 +22,25 @@
 			.name Vyřízené přihlášky
 			.value.big=$stats['solved']
 
+		.stat
+			.name Přijatých plateb
+			.value.big=$stats['received_cnt']
+
+		.stat
+			.name Přijato peněz
+			.value.unit.big!=$stats['received_sum'].' <span class="unit">Kč</span>'
+
+		.stat
+			.name Očekávano plateb
+			.value.big=$stats['expected_cnt']
+
+		.stat
+			.name Očekávaná částka
+			.value.unit.big!=$stats['expected_sum'].' <span class="unit">Kč</span>'
+
 	.site-summary.stat-list
+		p Zde je počet přihlášek a účinkujících na workshopech. První číslo jsou přihlášky, druhé číslo jsou lidi, kteří jsou přiřazení na workshopu.
+
 		- foreach $workshops as $ws
 			.stat
 				.name=$ws->name
