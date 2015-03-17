@@ -134,9 +134,9 @@
 										op  = [];
 
 									for (var i = 0; i < ex.length; i++) {
-										if (ex[i].get('id') != val) {
+										if (ex[i].get('id') != val && ex[i].get('free') > 0) {
 											op.push({
-												'name':ex[i].get('name') + ' (' + ex[i].get('lector') + ')',
+												'name':ex[i].get('name') + ', ' + ex[i].get('free') + ' míst',
 												'value':ex[i].get('id')
 											});
 										}
@@ -164,9 +164,9 @@
 									for (var i = 0; i < ex.length; i++) {
 										var id = ex[i].get('id');
 
-										if (id != val && id != pri) {
+										if (id != val && id != pri && ex[i].get('free') > 0) {
 											op.push({
-												'name':ex[i].get('name') + ' (' + ex[i].get('lector') + ')',
+												'name':ex[i].get('name') + ', ' + ex[i].get('free') + ' míst',
 												'value':ex[i].get('id')
 											});
 										}
@@ -224,10 +224,12 @@
 					opts  = [];
 
 				for (var i = 0 ; i < items.length; i++) {
-					opts.push({
-						'name':items[i].get('name') + ' (' + items[i].get('lector') + ')',
-						'value':items[i].get('id')
-					});
+					if (items[i].get('free') > 0) {
+						opts.push({
+							'name':items[i].get('name') + ', ' + items[i].get('free') + ' míst',
+							'value':items[i].get('id')
+						});
+					}
 				}
 
 				var use = p.storage.opts.elements[1].elements;
