@@ -1,0 +1,28 @@
+.stats
+	.site-summary.stat-list
+		.stat
+			.name Celkem přihlášek
+			.value.big=$stats['total']
+
+		.stat
+			.name Nezaplacené přihlášky
+			.value.big=$stats['unpaid']
+
+		.stat
+			.name Zaplacené přihlášky
+			.value.big=$stats['paid']
+
+		.stat
+			.name Čekající na zařazení
+			.value.big=$stats['waiting']
+
+		.stat
+			.name Vyřízené přihlášky
+			.value.big=$stats['solved']
+
+	.site-summary.stat-list
+		- foreach $workshops as $ws
+			.stat
+				.name=$ws->name
+				.value.light(title="Počet přihlášek")=$ws->sig_total
+				.value(title="Počet účastníků")=$ws->ass_total

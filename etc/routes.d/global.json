@@ -219,5 +219,14 @@
 		"modules":[
 			["stats.workshops"]
 		]
+	},
+
+	{
+		"name":"concept_results",
+		"url":"/data/prihlasky",
+		"subtitle":"Kdo se tlačí na Improtřesk",
+		"modules":[
+			["stats.signups"]
+		]
 	}
 ]
