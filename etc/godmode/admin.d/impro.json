@@ -37,7 +37,7 @@
 				"paid"
 			],
 
-			"attrs_list":["name_first", "name_last", "team", "email", "lunch", "paid", "solved", "created_at"],
+			"attrs_list":["name_first", "name_last", "team", "check", "assigned_to", "lunch", "paid", "solved", "created_at"],
 			"attrs_info":["id", "name_first", "name_last", "team", "email", "phone", "lunch", "paid", "solved", "assigned_to", "check", "workshops", "created_at"],
 			"attrs_edit":["team", "email", "phone", "lunch", "solved", "assigned_to"]
 		}
