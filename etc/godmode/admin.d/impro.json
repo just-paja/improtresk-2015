@@ -34,7 +34,9 @@
 		"opts":{
 			"model":"Workshop.SignUp",
 			"ui_filters":[
-				"paid"
+				"lunch",
+				"paid",
+				"solved"
 			],
 
 			"attrs_list":["name_first", "name_last", "team", "check", "assigned_to", "lunch", "paid", "solved", "created_at"],
