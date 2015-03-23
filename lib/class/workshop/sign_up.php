@@ -43,8 +43,9 @@ namespace Workshop
 			'solved'     => array("type" => 'bool'),
 
 			'check'      => array(
-				"type" => 'has_one',
-				"model" => 'Workshop\Check'
+				"type"    => 'has_one',
+				"model"   => 'Workshop\Check',
+				"is_null" => true
 			),
 
 			'workshops'  => array(
