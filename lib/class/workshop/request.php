@@ -5,8 +5,8 @@ namespace Workshop
 	class Request extends \System\Model\Perm
 	{
 		protected static $attrs = array(
-			'name'      => array('varchar'),
-			'email'     => array('varchar'),
+			'name'      => array("type" => 'varchar'),
+			'email'     => array("type" => 'varchar'),
 			'workshops' => array(
 				"type" => 'has_many',
 				"model" => 'Workshop\Concept',
@@ -14,7 +14,7 @@ namespace Workshop
 				"is_master" => true
 			),
 
-			'other' => array('text', "is_null" => true),
+			'other' => array("type" => 'text', "is_null" => true),
 		);
 	}
 }

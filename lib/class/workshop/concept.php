@@ -5,9 +5,9 @@ namespace Workshop
 	class Concept extends \System\Model\Perm
 	{
 		protected static $attrs = array(
-			'name' => array('varchar'),
-			'desc' => array('html'),
-			'visible' => array('bool'),
+			'name' => array("type" => 'varchar'),
+			'desc' => array("type" => 'html'),
+			'visible' => array("type" => 'bool'),
 			'requests' => array(
 				"type" => 'has_many',
 				"model" => 'Workshop\Request',
