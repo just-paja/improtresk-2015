@@ -62,6 +62,13 @@ namespace Workshop
 				"model"    => 'Workshop',
 				"is_null"  => true
 			),
+
+			'food' => array(
+				"type"  => 'has_many',
+				"model" => 'Food\Item',
+				"is_bilinear" => true,
+				"is_master"   => true
+			),
 		);
 
 

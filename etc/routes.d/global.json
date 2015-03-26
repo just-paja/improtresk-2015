@@ -54,6 +54,28 @@
 	},
 
 	{
+		"name":"food.enter",
+		"url":"/jidlo/obedy",
+		"title":"Moje obědy - Improtřesk 2015",
+		"subtitle":"Co dostanu k obědu",
+		"modules":[
+			["system.partial", {"template":"partial/info"}],
+			["food.dispatcher"]
+		]
+	},
+
+	{
+		"name":"food.pick",
+		"url":"/jidlo/obedy/{symvar:number}",
+		"title":"Moje obědy - Improtřesk 2015",
+		"subtitle":"Co dostanu k obědu",
+		"modules":[
+			["system.partial", {"template":"partial/info"}],
+			["food.picker"]
+		]
+	},
+
+	{
 		"name":"tips",
 		"url":"/tipy",
 		"title":"Tipy - Improtřesk 2015",
