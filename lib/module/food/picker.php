@@ -4,8 +4,31 @@ namespace Module\Food
 {
 	class Picker extends \System\Module
 	{
+		const EDITABLE_UNTIL = '2015-05-01 00:00:00';
+
+
 		public function run()
 		{
+			$end = \DateTime::createFromFormat('Y-m-d H:i:s', static::EDITABLE_UNTIL);
+			$now = new \DateTime();
+
+			if ($now > $end) {
+				return $this->run_list();
+			}
+
+			$this->run_form();
+		}
+
+
+
+		public function run_list()
+		{
+		}
+
+
+		public function run_form()
+		{
+			$end = \DateTime::createFromFormat('Y-m-d H:i:s', static::EDITABLE_UNTIL);
 			$this->req('symvar');
 
 			$check = \Workshop\Check::get_first(array(
@@ -56,12 +79,15 @@ namespace Module\Food
 					);
 				}
 
-				$days[$date][$type][] = $item;
+				$days[$date][$type][] = array(
+					"name" => $item->name,
+					"value" => $item->id
+				);
 			}
 
 			$f = $this->response->form(array(
 				"heading" => 'Vyber si obědy',
-				"desc"    => 'Předvol si obědy na Improtřesk 2015',
+				"desc"    => 'Předvol si obědy na Improtřesk 2015. Tato možnost končí '.$end->format('j. n. v H:i').'. Jídlo, které si nevyberete vám bude přiděleno.',
 				"id"      => 'food-picker',
 				"default" => $data,
 			));
@@ -86,6 +112,20 @@ namespace Module\Food
 
 			$f->submit('Uložit');
 			$f->out($this);
+
+			if ($f->passed()) {
+				$data = $f->get_data();
+				$use  = array();
+
+				foreach ($data as $key=>$val) {
+					if ($val != 666 && strpos($key, 'soup') === 0 || strpos($key, 'main') === 0) {
+						$use[] = $val;
+					}
+				}
+
+				$signup->food = $use;
+				$signup->save();
+			}
 		}
 	}
 }
