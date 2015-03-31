@@ -1,4 +1,13 @@
 .stats {
+	&.non-payers {
+		margin:0 auto;
+		width:500px;
+
+		p {
+			text-align:justify;
+		}
+	}
+
 	.ws {
 		margin-bottom:25px;
 
@@ -39,6 +48,50 @@
 
 		li {
 			list-style:decimal outside;
+		}
+	}
+
+	.pc-list {
+		margin:0 auto;
+		width:420px;
+
+		.pc {
+			.fix-transition(.3s);
+			border-bottom:1px solid transparent;
+			line-height:24px;
+
+			&:hover {
+				border-color:rgba(255,255,255,.25);
+			}
+		}
+
+		.header {
+			border-bottom:1px solid rgba(255,255,255,.25);
+			margin-bottom:5px;
+			padding-bottom:5px;
+		}
+
+		.pc-name,
+		.pc-amount,
+		.pc-created
+		{
+			display:inline-block;
+			vertical-align:top;
+		}
+
+		.pc-name {
+			width:180px;
+		}
+
+		.pc-amount {
+			color:#fff;
+			text-align:right;
+			width:80px;
+		}
+
+		.pc-created {
+			text-align:right;
+			width:160px;
 		}
 	}
 }

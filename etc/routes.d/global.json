@@ -200,6 +200,16 @@
 	},
 
 	{
+		"name":"nonpayers",
+		"url":"/data/neplatici",
+		"title":"Neplatiči",
+		"subtitle":"Kdo nám ještě něco dluží",
+		"modules":[
+			["stats.non_payers"]
+		]
+	},
+
+	{
 		"name":"concept",
 		"url":"/formulare/signup",
 		"modules":[
