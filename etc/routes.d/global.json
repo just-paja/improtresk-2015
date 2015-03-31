@@ -245,7 +245,7 @@
 	},
 
 	{
-		"name":"concept_results",
+		"name":"stats.workshops",
 		"url":"/data/workshopy",
 		"title":"Stav workshopů",
 		"subtitle":"S kým budete na workshopu",
@@ -255,12 +255,22 @@
 	},
 
 	{
-		"name":"concept_results",
+		"name":"stats.signups",
 		"url":"/data/prihlasky",
 		"title":"Stav přihlášek",
 		"subtitle":"Jak to vypadá pod pokličkou",
 		"modules":[
 			["stats.signups"]
+		]
+	},
+
+	{
+		"name":"stats.meals",
+		"url":"/data/obedy",
+		"title":"Stav obědů",
+		"subtitle":"Kolik jídel objednáme",
+		"modules":[
+			["stats.meals"]
 		]
 	}
 ]

@@ -16,6 +16,8 @@ namespace Food
 				)
 			),
 
+			'blank' => array("type" => 'bool'),
+
 			'edible' => array(
 				"type" => 'bool',
 				"default" => 1

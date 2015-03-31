@@ -137,3 +137,47 @@
 		}
 	}
 }
+
+.meal-stats {
+	.day {
+		border-bottom:1px solid rgba(255,255,255,.25);
+		margin-bottom:20px;
+		padding-bottom:10px;
+
+		&:last-child {
+			border:none;
+			margin-bottom:0;
+			padding-bottom:0;
+		}
+
+		.day-date {
+			font-size:32px;
+			margin-bottom:20px;
+		}
+
+		.stat {
+			.name,
+			.type,
+			.value
+			{
+				display:inline-block;
+				font-size:18px;
+				text-align:left;
+				vertical-align:top;
+			}
+
+			.name {
+				width:320px
+			}
+
+			.type {
+				width:80px;
+			}
+
+			.value {
+				width:30px;
+				text-align:right;
+			}
+		}
+	}
+}
