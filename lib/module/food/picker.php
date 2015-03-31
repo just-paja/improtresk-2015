@@ -49,9 +49,9 @@ namespace Module\Food
 			$food = \Food\Item::get_all(array("edible" => true))->fetch();
 			$days = array();
 			$data = array(
-				'soup_2015-05-08' => 666,
+				'soup_2015-05-08' => 1,
 				'main_2015-05-08' => 666,
-				'soup_2015-05-09' => 666,
+				'soup_2015-05-09' => 2,
 				'main_2015-05-09' => 666,
 			);
 
@@ -70,9 +70,7 @@ namespace Module\Food
 				if (!array_key_exists($date, $days)) {
 					$days[$date] = array(
 						"date" => $item->date,
-						"soup" => array(
-							array("name" => 'Nechci polévku', "value" => 666),
-						),
+						"soup" => array(),
 						"main" => array(
 							array("name" => 'Překvapte mě', "value" => 666),
 						),
