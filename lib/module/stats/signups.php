@@ -23,12 +23,12 @@ namespace Module\Stats
 				"paid"    => \Workshop\SignUp::get_all()->where(array('paid' => true))->count(),
 				"waiting" => \Workshop\SignUp::get_all()->where(array('paid' => true, 'solved' => false))->count(),
 				"solved"  => \Workshop\SignUp::get_all()->where(array('solved' => true))->count(),
+				"meals"   => \Workshop\SignUp::get_all()->where(array('solved' => true, 'lunch' => true))->count(),
 				"expected_cnt"  => \Workshop\Check::get_all()->where(array("is_paid" => false))->count(),
 				"expected_sum"  => $account_pay['total'],
 				"received_cnt"  => \Workshop\Payment::get_all()->count(),
 				"received_sum"  => $account_sum['total'],
 			);
-
 
 			$ws = \Workshop::get_all()->fetch();
 
