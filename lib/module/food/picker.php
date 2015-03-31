@@ -71,7 +71,7 @@ namespace Module\Food
 					$days[$date] = array(
 						"date" => $item->date,
 						"soup" => array(
-							array("name" => 'Bez polévky', "value" => 666),
+							array("name" => 'Nechci polévku', "value" => 666),
 						),
 						"main" => array(
 							array("name" => 'Překvapte mě', "value" => 666),
@@ -87,7 +87,7 @@ namespace Module\Food
 
 			$f = $this->response->form(array(
 				"heading" => 'Vyber si obědy',
-				"desc"    => 'Předvol si obědy na Improtřesk 2015. Tato možnost končí '.$end->format('j. n. v H:i').'. Jídlo, které si nevyberete vám bude přiděleno.',
+				"desc"    => 'Předvol si obědy na Improtřesk 2015. Tato možnost končí '.$end->format('j. n. v H:i').'. Můžeš si zvolit "překvapte mě" a my jídlo vybereme za tebe.',
 				"id"      => 'food-picker',
 				"default" => $data,
 			));
@@ -113,19 +113,30 @@ namespace Module\Food
 			$f->submit('Uložit');
 			$f->out($this);
 
-			if ($f->passed()) {
-				$data = $f->get_data();
-				$use  = array();
+			if ($f->submited()) {
+				if ($f->passed()) {
+					$data = $f->get_data();
+					$use  = array();
 
-				foreach ($data as $key=>$val) {
-					if ($val != 666 && strpos($key, 'soup') === 0 || strpos($key, 'main') === 0) {
-						$use[] = $val;
+					foreach ($data as $key=>$val) {
+						if ($val != 666 && strpos($key, 'soup') === 0 || strpos($key, 'main') === 0) {
+							$use[] = $val;
+						}
 					}
-				}
 
-				$signup->food = $use;
-				$signup->save();
+					$signup->food = $use;
+					$signup->save();
+
+					$this->partial('forms/message', array(
+						"msg" => 'Uloženo'
+					));
+				} else {
+					$this->partial('forms/message', array(
+						"msg" => 'Neplatný vstup, zkus to prosím znova'
+					));
+				}
 			}
+
 		}
 	}
 }
