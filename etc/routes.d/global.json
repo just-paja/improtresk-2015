@@ -247,6 +247,7 @@
 	{
 		"name":"concept_results",
 		"url":"/data/workshopy",
+		"title":"Stav workshopů",
 		"subtitle":"S kým budete na workshopu",
 		"modules":[
 			["stats.workshops"]
@@ -256,6 +257,7 @@
 	{
 		"name":"concept_results",
 		"url":"/data/prihlasky",
+		"title":"Stav přihlášek",
 		"subtitle":"Jak to vypadá pod pokličkou",
 		"modules":[
 			["stats.signups"]
