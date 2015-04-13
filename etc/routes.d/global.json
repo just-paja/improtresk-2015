@@ -227,6 +227,15 @@
 	},
 
 	{
+		"name":"forms-match",
+		"title":"Anketa: Týmy na zápas - Improtřesk 2015",
+		"url":"/formulare/zapas/{symvar:number}",
+		"modules":[
+			["forms.match"]
+		]
+	},
+
+	{
 		"name":"concept_feed",
 		"url":"/formulare/koncept/feed",
 		"format":"json",
