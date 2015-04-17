@@ -47,6 +47,7 @@ namespace Module\Forms
 				 8 => 'Klika',
 				 9 => 'Pro Impro',
 				10 => 'K.OP.R.',
+				11 => 'V.I.P.',
 			);
 
 			$f = $this->response->form(array(
