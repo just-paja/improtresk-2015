@@ -19,7 +19,8 @@ namespace Helper\Cli\Module
 
 
 		protected static $commands = array(
-			"lunch" => array('Send notification about lunch and match survey'),
+			"match" => array('Send notification about match survey'),
+			"lunch" => array('Send notification about lunch picker'),
 		);
 
 
