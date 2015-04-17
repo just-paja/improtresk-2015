@@ -2,7 +2,7 @@ Ahoj,
 
 v závislosti na tvojí přihlášce na Improtřesk 2015 ti posíláme pozvánku k protekčnímu hlasování. Který tým by se podle tebe měl zúčastnit velkého Improtřeskového improzápasu? Je to jenom na nás, jaké si to uděláme, tak se slaďme!
 
-http://improtresk.cz/<?=\System\Router::get_url('global', 'forms.match', array("symvar" => $symvar))?>
+http://improtresk.cz<?=\System\Router::get_url('global', 'forms.match', array("symvar" => $symvar))?>
 
 
 Organizační tým Improtřesku 2015
