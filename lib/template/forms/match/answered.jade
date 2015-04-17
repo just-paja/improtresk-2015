@@ -1,0 +1,17 @@
+.form-teams
+	h2 Které dva týmy chceš vidět na zápase?
+
+	p Díky za odpověď. Výsledky zveřejněny nebudou, ale budeme podle nich vybírat.
+
+	p
+		|Hlasoval jsi pro:
+		=" "
+		:php
+			$msg = array();
+
+			foreach ($answer->response as $team) {
+				$msg[] = $teams[$team];
+			}
+
+		=implode(', ', $msg)
+
