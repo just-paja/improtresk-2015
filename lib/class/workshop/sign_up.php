@@ -42,6 +42,8 @@ namespace Workshop
 			'paid'       => array("type" => 'bool'),
 			'solved'     => array("type" => 'bool'),
 
+			'sent_lunch' => array("type" => 'bool', "default" => false),
+
 			'check'      => array(
 				"type"    => 'has_one',
 				"model"   => 'Workshop\Check',
