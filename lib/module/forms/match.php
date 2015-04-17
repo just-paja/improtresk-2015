@@ -70,7 +70,7 @@ namespace Module\Forms
 				'maxlen'    => 2,
 				'minlen'    => 2,
 				'options'   => static::$teams,
-				'value'     => []
+				'value'     => array(),
 			));
 
 			$f->submit('Odeslat');
