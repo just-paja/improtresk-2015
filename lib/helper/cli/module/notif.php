@@ -30,7 +30,8 @@ namespace Helper\Cli\Module
 			$users = \Workshop\SignUp::get_all()
 				->where(array(
 					"sent_lunch" => false,
-					"solved" => true
+					"solved" => true,
+					"lunch" => true
 				))
 				->fetch();
 
@@ -44,12 +45,49 @@ namespace Helper\Cli\Module
 
 				$mail = new \Helper\Offcom\Mail(array(
 					'rcpt'     => array($user->email),
-					'subject'  => 'Improtřesk 2015 - Obědy a týmy na zápas',
+					'subject'  => 'Improtřesk 2015 - Výběr oběda',
 					'reply_to' => \System\Settings::get('offcom', 'default', 'reply_to'),
 					'message'  => $ren->render_content()
 				));
 
 				$mail->send();
+
+				$user->sent_lunch = true;
+				$user->save();
+			});
+		}
+
+
+		public function cmd_match()
+		{
+			\System\Init::full();
+
+			$users = \Workshop\SignUp::get_all()
+				->where(array(
+					"sent_match" => false,
+					"solved" => true
+				))
+				->fetch();
+
+			\Helper\Cli::do_over($users, function($key, $user) {
+				$ren = new \System\Template\Renderer\Txt();
+				$ren->reset_layout();
+				$ren->partial('mail/notif/match', array(
+					"user"   => $user,
+					"symvar" => $user->check->symvar
+				));
+
+				$mail = new \Helper\Offcom\Mail(array(
+					'rcpt'     => array($user->email),
+					'subject'  => 'Improtřesk 2015 - Týmy na zápas',
+					'reply_to' => \System\Settings::get('offcom', 'default', 'reply_to'),
+					'message'  => $ren->render_content()
+				));
+
+				$mail->send();
+
+				$user->sent_lunch = true;
+				$user->save();
 			});
 		}
 	}

@@ -43,6 +43,7 @@ namespace Workshop
 			'solved'     => array("type" => 'bool'),
 
 			'sent_lunch' => array("type" => 'bool', "default" => false),
+			'sent_match' => array("type" => 'bool', "default" => false),
 
 			'check'      => array(
 				"type"    => 'has_one',
