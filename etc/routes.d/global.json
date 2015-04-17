@@ -92,7 +92,19 @@
 		"title":"Co je Improtřesk? - Improtřesk 2015",
 		"subtitle":"Co je to Improtřesk?",
 		"modules":[
+			["system.partial", {"template":"partial/menu-about"}],
 			["system.partial", {"template":"pages/about"}]
+		]
+	},
+
+	{
+		"name":"faq",
+		"url":"/caste-dotazy",
+		"title":"Časté dotazy - Improtřesk 2015",
+		"subtitle":"Na co se nás nejvíc ptáte",
+		"modules":[
+			["system.partial", {"template":"partial/menu-about"}],
+			["system.partial", {"template":"pages/faq"}]
 		]
 	},
 
