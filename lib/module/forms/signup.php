@@ -67,14 +67,12 @@ namespace Module\Forms
 				'name' => 'workshop_1',
 				'type' => 'select',
 				'options' => $opts,
-				'required' => true
 			));
 
 			$f->input(array(
 				'name' => 'workshop_2',
 				'type' => 'select',
 				'options' => $opts,
-				'required' => true
 			));
 
 			return $f;
@@ -97,11 +95,13 @@ namespace Module\Forms
 					$d = $f->get_data();
 
 					$item = new \Workshop\SignUp($d);
-					$item->workshops = array(
+					$ws_list = array_filter(array(
 						$d['workshop_0'],
 						$d['workshop_1'],
 						$d['workshop_2'],
-					);
+					));
+
+					$item->workshops = $ws_list;
 
 					$item->save();
 					$item->mail_confirm($this->response);
