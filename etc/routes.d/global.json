@@ -210,6 +210,16 @@
 	},
 
 	{
+		"name":"team-stats",
+		"url":"/data/tymy",
+		"title":"Týmy",
+		"subtitle":"Kdo má největší účast?",
+		"modules":[
+			["stats.teams"]
+		]
+	},
+
+	{
 		"name":"concept",
 		"url":"/formulare/signup",
 		"modules":[
