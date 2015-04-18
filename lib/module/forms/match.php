@@ -84,6 +84,7 @@ namespace Module\Forms
 				));
 
 				$obj->save();
+				$this->answer = $obj;
 				$this->run_thanks();
 			} else {
 				$f->out($this);
