@@ -67,8 +67,8 @@ namespace Module\Forms
 				'name'      => 'teams',
 				'multiple'  => true,
 				'required'  => true,
-				'maxlen'    => 2,
-				'minlen'    => 2,
+				'maxlength'    => 2,
+				'minlength'    => 2,
 				'options'   => static::$teams,
 				'value'     => array(),
 			));
