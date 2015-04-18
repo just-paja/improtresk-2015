@@ -67,5 +67,10 @@
 	"model-Workshop.Payment-attr-message":"Zpráva",
 	"model-Workshop.Payment-attr-received":"Přijato bankou",
 	"model-Workshop.Payment-attr-amount":"Částka",
-	"model-Workshop.Payment-attr-check":"Účtenka"
+	"model-Workshop.Payment-attr-check":"Účtenka",
+
+	"model-Survey.TeamAnswer":"Odpověď",
+	"model-Survey.TeamAnswer-plural":"Odpovědi",
+	"model-Survey.TeamAnswer-attr-response":"Odpověď",
+	"model-Survey.TeamAnswer-attr-signup":"Přihláška"
 }
