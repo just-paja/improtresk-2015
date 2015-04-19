@@ -14,7 +14,7 @@
 		"pwf-adminer":"^0.4",
 		"pwf-models-schema":"^0.4",
 
-		"pwf-async-compat":"*",
+		"pwf-async-compat":"^1.0",
 		"pwf-moment-compat":"*",
 
 		"pwf-input-autocompleter":"*",
