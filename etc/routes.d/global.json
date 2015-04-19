@@ -222,6 +222,16 @@
 	},
 
 	{
+		"name":"nonpayers",
+		"url":"/data/zapas",
+		"title":"Zápas, výsledky ankety",
+		"subtitle":"Kdo by měl hrát na zápase?",
+		"modules":[
+			["stats.match"]
+		]
+	},
+
+	{
 		"name":"team-stats",
 		"url":"/data/tymy",
 		"title":"Týmy",
