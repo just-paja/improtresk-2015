@@ -117,7 +117,7 @@ namespace Module\Food
 					$use  = array();
 
 					foreach ($data as $key=>$val) {
-						if ($val != 666 && strpos($key, 'soup') === 0 || strpos($key, 'main') === 0) {
+						if ($val != 666 && (strpos($key, 'soup') === 0 || strpos($key, 'main') === 0)) {
 							$use[] = $val;
 						}
 					}
