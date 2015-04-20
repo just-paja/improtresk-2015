@@ -22,7 +22,6 @@ namespace Module\Forms
 		{
 			$check = \Workshop\Check::get_first(array(
 				'symvar'  => $this->symvar,
-				'is_paid' => true
 			))->fetch();
 
 			if (!$check) {
@@ -31,7 +30,7 @@ namespace Module\Forms
 
 			$signup = $check->signup;
 
-			if (!$signup) {
+			if (!$signup || !$signup->solved) {
 				throw new \System\Error\NotFound();
 			}
 
