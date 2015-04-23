@@ -122,7 +122,7 @@
 		"name":"info",
 		"url":"/pro-ucastniky",
 		"title":"Pro účastníky - Improtřesk 2015",
-		"subtitle":"Program",
+		"subtitle":"Informace pro účastníky",
 		"modules":[
 			["system.partial", {"template":"partial/info"}],
 			["system.partial", {"template":"pages/info"}]
@@ -135,16 +135,18 @@
 		"title":"Program - Improtřesk 2015",
 		"subtitle":"Program",
 		"modules":[
+			["system.partial", {"template":"partial/menu-schedule"}],
 			["system.partial", {"template":"pages/schedule"}]
 		]
 	},
 
 	{
-		"name":"schedule",
+		"name":"schedule-daily",
 		"url":"/harmonogram",
 		"title":"Harmonogram - Improtřesk 2015",
 		"subtitle":"Harmonogram",
 		"modules":[
+			["system.partial", {"template":"partial/menu-schedule"}],
 			["system.partial", {"template":"pages/schedule-daily"}]
 		]
 	},
