@@ -39,6 +39,9 @@
 					a(href=$ren->url('contact')) Kontakt
 
 	.content
+		:php
+			$ren->slot('outer');
+
 		.content-inner
 			:php
 				$ren->slot();
