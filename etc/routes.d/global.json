@@ -312,7 +312,7 @@
 		"title":"Stav workshopů",
 		"subtitle":"S kým budete na workshopu",
 		"modules":[
-			["stats.workshops"]
+			["stats.workshops", {"slot":"outer"}]
 		]
 	},
 
