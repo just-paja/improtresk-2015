@@ -140,6 +140,16 @@
 	},
 
 	{
+		"name":"schedule",
+		"url":"/harmonogram",
+		"title":"Harmonogram - Improtřesk 2015",
+		"subtitle":"Harmonogram",
+		"modules":[
+			["system.partial", {"template":"pages/schedule-daily"}]
+		]
+	},
+
+	{
 		"name":"carshare",
 		"url":"/autem",
 		"title":"Cesta autem - Improtřesk 2015",
