@@ -87,7 +87,7 @@ namespace Helper\Cli\Module
 
 				$mail->send();
 
-				$user->sent_lunch = true;
+				$user->sent_match = true;
 				$user->save();
 			});
 		}
