@@ -9,14 +9,14 @@ html(lang=$loc->get_lang())
 		meta(name="description", content="Improtřesk 2015 - Festival divadelní improvizace")
 		meta(name="viewport", content="width=device-width")
 
-		:php
-			$ren->slot('og')
-
 		meta(name="og:title", content=$res->title)
 		meta(name="og:type", content="website")
 		meta(name="og:description", content="Improtřesk je český festival divadelní improvizace a největší setkání improligových týmů z celé České republiky.")
 		meta(name="og:image", content=\System\Resource::get_url('static', 'pixmap', 'hands-softlight-og.jpg'))
 		meta(name="og:url", content=$rq->path)
+
+		:php
+			$ren->slot('og')
 
 		:php
 			$ren->content_for('title', $res->title);
