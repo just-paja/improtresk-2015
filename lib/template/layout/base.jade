@@ -9,6 +9,9 @@ html(lang=$loc->get_lang())
 		meta(name="description", content="Improtřesk 2015 - Festival divadelní improvizace")
 		meta(name="viewport", content="width=device-width")
 
+		:php
+			$ren->content_from('og')
+
 		meta(name="og:title", content=$res->title)
 		meta(name="og:type", content="website")
 		meta(name="og:description", content="Improtřesk je český festival divadelní improvizace a největší setkání improligových týmů z celé České republiky.")
