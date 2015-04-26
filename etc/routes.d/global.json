@@ -109,6 +109,17 @@
 	},
 
 	{
+		"name":"orgs",
+		"url":"/organizatori",
+		"title":"Organizátoři - Improtřesk 2015",
+		"subtitle":"Kdo se o vás bude starat",
+		"modules":[
+			["system.partial", {"template":"partial/menu-about"}],
+			["system.partial", {"template":"pages/orgs"}]
+		]
+	},
+
+	{
 		"name":"signup",
 		"url":"/prihlaska",
 		"title":"Přihláška - Improtřesk 2015",
