@@ -10,7 +10,7 @@ html(lang=$loc->get_lang())
 		meta(name="viewport", content="width=device-width")
 
 		:php
-			$ren->content_from('og')
+			$ren->slot('og')
 
 		meta(name="og:title", content=$res->title)
 		meta(name="og:type", content="website")
