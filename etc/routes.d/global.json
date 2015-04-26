@@ -157,7 +157,7 @@
 		"title":"Cesta autem - Improtřesk 2015",
 		"subtitle":"Cesta autem",
 		"modules":[
-			["system.partial", {"template":"partial/og-carshare", "slot":"og"}],
+			["system.partial", {"template":"partial/og-carshare", "slot":"og", "wrap":false}],
 			["system.partial", {"template":"pages/carshare"}]
 		]
 	},
@@ -168,7 +168,7 @@
 		"title":"Cesta autem - Improtřesk 2015",
 		"format":"json",
 		"modules":[
-			["system.partial", {"template":"partial/og-carshare", "slot":"og"}],
+			["system.partial", {"template":"partial/og-carshare", "slot":"og", "wrap":false}],
 			["car.share"]
 		]
 	},
@@ -178,7 +178,7 @@
 		"url":"/autem/{id:number}",
 		"title":"Cesta autem - Improtřesk 2015",
 		"modules":[
-			["system.partial", {"template":"partial/og-carshare", "slot":"og"}],
+			["system.partial", {"template":"partial/og-carshare", "slot":"og", "wrap":false}],
 			["car.offer.detail"]
 		]
 	},
@@ -189,7 +189,7 @@
 		"title":"Cesta autem - Improtřesk 2015",
 		"format":"json",
 		"modules":[
-			["system.partial", {"template":"partial/og-carshare", "slot":"og"}],
+			["system.partial", {"template":"partial/og-carshare", "slot":"og", "wrap":false}],
 			["car.request"]
 		]
 	},
@@ -198,7 +198,7 @@
 		"name":"carshare_admin",
 		"url":"/autem/{ident:varchar}/admin",
 		"modules":[
-			["system.partial", {"template":"partial/og-carshare", "slot":"og"}],
+			["system.partial", {"template":"partial/og-carshare", "slot":"og", "wrap":false}],
 
 			["car.offer.admin.detail", {
 				"module_id":"detail"
@@ -214,7 +214,7 @@
 		"url":"/autem/{ident:varchar}/admin/edit",
 		"name":"carshare_admin",
 		"modules":[
-			["system.partial", {"template":"partial/og-carshare", "slot":"og"}],
+			["system.partial", {"template":"partial/og-carshare", "slot":"og", "wrap":false}],
 			["car.share"],
 			["car.offer.admin.edit"]
 		]
