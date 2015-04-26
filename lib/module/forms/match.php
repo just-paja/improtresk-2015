@@ -17,6 +17,8 @@ namespace Module\Forms
 			11 => 'V.I.P.',
 		);
 
+		static public $end = '2015-04-20';
+
 
 		public function run()
 		{
@@ -42,6 +44,13 @@ namespace Module\Forms
 			$this->answer = $answer;
 
 			if (!$answer) {
+				$now = new \DateTime();
+				$end = new \DateTime(static::$end);
+
+				if ($end < $now) {
+					throw new \System\Error\AccessDenied();
+				}
+
 				return $this->run_form();
 			}
 
