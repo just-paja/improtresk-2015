@@ -59,7 +59,7 @@
 		"title":"Moje obědy - Improtřesk 2015",
 		"subtitle":"Co dostanu k obědu",
 		"modules":[
-			["system.partial", {"template":"partial/og-carshare", "slot":"og", "wrap":false}],
+			["system.partial", {"template":"partial/og-lunch", "slot":"og", "wrap":false}],
 			["system.partial", {"template":"partial/info"}],
 			["food.dispatcher"]
 		]
@@ -71,7 +71,7 @@
 		"title":"Moje obědy - Improtřesk 2015",
 		"subtitle":"Co dostanu k obědu",
 		"modules":[
-			["system.partial", {"template":"partial/og-carshare", "slot":"og", "wrap":false}],
+			["system.partial", {"template":"partial/og-lunch", "slot":"og", "wrap":false}],
 			["system.partial", {"template":"partial/info"}],
 			["food.picker"]
 		]
