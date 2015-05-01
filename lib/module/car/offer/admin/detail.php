@@ -45,6 +45,10 @@ namespace Module\Car\Offer\Admin
 					))->fetch(),
 				));
 
+				$this->partial('pages/carshare-admin-links', array(
+					"ident" => $ident
+				));
+
 			} else throw new \System\Error\NotFound();
 		}
 	}

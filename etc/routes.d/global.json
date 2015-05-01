@@ -226,9 +226,10 @@
 
 	{
 		"url":"/autem/{ident:varchar}/admin/edit",
-		"name":"carshare_admin",
+		"name":"carshare.admin.edit",
 		"modules":[
 			["system.partial", {"template":"partial/og-carshare", "slot":"og", "wrap":false}],
+			["car.share"],
 			["car.offer.admin.edit"]
 		]
 	},

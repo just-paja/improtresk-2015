@@ -98,13 +98,12 @@ namespace Module\Car
 				} else {
 					$data = $f->get_errors();
 				}
-			}
 
+				$res->mime = 'text/html';
 
-			$res->mime = 'text/html';
-
-			if (!isset($ident) || $f->submited()) {
-				$this->json_response($status, $message, $data);
+				if (!isset($ident) || $f->submited()) {
+					$this->json_response($status, $message, $data);
+				}
 			}
 		}
 	}
