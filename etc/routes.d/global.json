@@ -168,7 +168,7 @@
 	{
 		"name":"conference",
 		"url":"/konference",
-		"title":"Sušenková konference - Improtřesk 2015",
+		"title":"Tea konference - Improtřesk 2015",
 		"subtitle":"Každý se stane řečníkem",
 		"modules":[
 			["system.partial", {"template":"partial/menu-schedule"}],
