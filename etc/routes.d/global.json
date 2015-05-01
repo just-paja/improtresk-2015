@@ -81,7 +81,7 @@
 		"name":"tips",
 		"url":"/tipy",
 		"title":"Tipy - Improtřesk 2015",
-		"subtitle":"Tipy na cestu a v okolí",
+		"subtitle":"Tipy pro lepší zážitky",
 		"modules":[
 			["system.partial", {"template":"partial/info"}],
 			["system.partial", {"template":"pages/tips"}]
