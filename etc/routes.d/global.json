@@ -166,6 +166,17 @@
 	},
 
 	{
+		"name":"conference",
+		"url":"/konference",
+		"title":"Sušenková konference - Improtřesk 2015",
+		"subtitle":"Každý se stane řečníkem",
+		"modules":[
+			["system.partial", {"template":"partial/menu-schedule"}],
+			["system.partial", {"template":"pages/conference"}]
+		]
+	},
+
+	{
 		"name":"carshare",
 		"url":"/autem",
 		"title":"Cesta autem - Improtřesk 2015",

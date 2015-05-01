@@ -109,6 +109,11 @@
 				li {
 					display:block;
 				}
+
+				&.long {
+					left:-50px;
+					right:-50px;
+				}
 			}
 
 			menu.data li:hover menu.sub {
@@ -266,5 +271,17 @@
 			background-image:url(<pixmap(logo/skola-improvizace.png)>);
 			width:116px;
 		}
+	}
+}
+
+
+.cols-inline {
+	text-align:center;
+
+	.col {
+		display:inline-block;
+		margin:0 15px;
+		vertical-align:top;
+
 	}
 }
