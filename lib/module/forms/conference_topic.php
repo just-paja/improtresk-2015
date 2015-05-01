@@ -38,18 +38,28 @@ namespace Module\Forms
 
 		public function run()
 		{
-			if (\Conference\Topic::is_running()) {
-				$f = $this->get_form();
-
-				if ($f->submited()) {
-					if ($f->passed()) {
-						$d = $f->get_data();
-
-					}
-				}
-
-				$f->out($this);
+			if (!\Conference\Topic::is_running() || $this->request->get('ulozeno') == 'neasi') {
+				return;
 			}
+
+			$total = \Conference\Topic::get_all()->where(array('banned' => false))->count();
+
+			if ($total >= \Conference\Topic::LIMIT_USER) {
+				return;
+			}
+
+			$f = $this->get_form();
+
+			if ($f->submited()) {
+				if ($f->passed()) {
+					$t = new \Conference\Topic($f->get_data());
+					$t->save();
+
+					$this->flow->redirect($this->response->url('conference').'?ulozeno=neasi');
+				}
+			}
+
+			$f->out($this);
 		}
 	}
 }

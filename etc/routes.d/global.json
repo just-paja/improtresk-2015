@@ -172,8 +172,8 @@
 		"subtitle":"Každý se stane řečníkem",
 		"modules":[
 			["system.partial", {"template":"partial/menu-schedule"}],
+			["forms.conference_topic", {"slot":"topics-form"}],
 			["conference.topics", {"slot":"topics"}],
-			["forms.conference_topic", {"slot":"topics"}],
 			["system.partial", {"template":"pages/conference"}]
 		]
 	},

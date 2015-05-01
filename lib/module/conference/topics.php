@@ -13,6 +13,7 @@ namespace Module\Conference
 				"running" => \Conference\Topic::is_running(),
 				"items"   => $items,
 				"total"   => count($items),
+				"saved"   => $this->request->get('ulozeno') == 'neasi',
 			));
 		}
 	}
