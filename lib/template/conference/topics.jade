@@ -1,0 +1,17 @@
+.topics
+	if $total > 0
+		ul
+			-foreach $items as $item
+
+				li
+					.name=$item->name
+					.topic=$item->topic
+
+	else
+		p Nikdo ještě žádné téma nepřihlásil
+
+	if $running
+		if $total >= $limit
+			p Celkový limit témat je zatím nastavený na $limit. Pokud se tvoje téma nevešlo, můžeš nás zkusit <a href="#{$ren->url('contact')}">kontaktovat</a>.
+	else
+		p Přidávání témat je uzavřeno.
