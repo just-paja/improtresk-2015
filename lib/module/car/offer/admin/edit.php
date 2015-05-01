@@ -1,6 +1,6 @@
 <?
 
-namespace Car\Offer\Admin
+namespace Module\Car\Offer\Admin
 {
 	class Edit extends \System\Module
 	{
@@ -10,25 +10,25 @@ namespace Car\Offer\Admin
 
 			$offer = \Car\Offer::get_first()
 				->where(array(
-					'ident'   => $ident,
+					'ident'   => $this->ident,
 					'visible' => true
 				))
 				->fetch();
 
 			if ($offer) {
-				$cfg = $rq->fconfig;
+				$cfg = $this->request->fconfig;
 
 				$cfg['ui']['data'] = array(
 					array(
 						'model' => 'Car.Offer',
 						'items' => array(
-							$offer->to_object_with_perms($rq->user)
+							$offer->to_object_with_perms($this->request->user)
 						)
 					)
 				);
 
-				$rq->fconfig = $cfg;
-				$res->subtitle = 'úpravy nabídky na sdílení auta';
+				$this->request->fconfig = $cfg;
+				$this->response->subtitle = 'úpravy nabídky na sdílení auta';
 
 				$this->partial('pages/carshare-admin', array(
 					"item"     => $offer,

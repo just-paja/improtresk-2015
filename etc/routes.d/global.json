@@ -229,7 +229,6 @@
 		"name":"carshare_admin",
 		"modules":[
 			["system.partial", {"template":"partial/og-carshare", "slot":"og", "wrap":false}],
-			["car.share"],
 			["car.offer.admin.edit"]
 		]
 	},

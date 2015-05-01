@@ -8,7 +8,7 @@ pwf.wait_for('module', 'config', function() {
 			pwf.wait_for('class', cfg[i].model, function(item) {
 				return function() {
 					for (var j = 0; j < item.items.length; j++) {
-						pwf.create(item.model, item.items[j]);
+						var o = pwf.create(item.model, item.items[j]);
 					}
 				};
 			}(cfg[i]));
