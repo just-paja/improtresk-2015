@@ -83,6 +83,7 @@
 		"title":"Tipy - Improtřesk 2015",
 		"subtitle":"Tipy pro lepší zážitky",
 		"modules":[
+			["system.partial", {"template":"partial/og-tips", "slot":"og", "wrap":false}],
 			["system.partial", {"template":"partial/info"}],
 			["system.partial", {"template":"pages/tips"}]
 		]
