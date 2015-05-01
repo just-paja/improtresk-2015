@@ -14,6 +14,13 @@
 				"opts":{
 					"model":"Survey.TeamAnswer"
 				}
+			},
+
+			{
+				"title":"Témata konference",
+				"opts":{
+					"model":"Conference.Topic"
+				}
 			}
 		]
 	},
