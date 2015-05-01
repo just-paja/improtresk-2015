@@ -72,5 +72,11 @@
 	"model-Survey.TeamAnswer":"Odpověď",
 	"model-Survey.TeamAnswer-plural":"Odpovědi",
 	"model-Survey.TeamAnswer-attr-response":"Odpověď",
-	"model-Survey.TeamAnswer-attr-signup":"Přihláška"
+	"model-Survey.TeamAnswer-attr-signup":"Přihláška",
+
+	"model-Conference.Topic":"Téma konference",
+	"model-Conference.Topic-plural":"Témata konference",
+	"model-Conference.Topic-attr-topic":"Téma",
+	"model-Conference.Topic-attr-name":"Garant",
+	"model-Conference.Topic-attr-banned":"Zakázáno"
 }
