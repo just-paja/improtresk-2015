@@ -19,8 +19,9 @@ namespace Helper\Cli\Module
 
 
 		protected static $commands = array(
-			"match" => array('Send notification about match survey'),
-			"lunch" => array('Send notification about lunch picker'),
+			"general" => array('Send notification containing general information'),
+			"lunch"   => array('Send notification about lunch picker'),
+			"match"   => array('Send notification about match survey'),
 		);
 
 
@@ -88,6 +89,41 @@ namespace Helper\Cli\Module
 				$mail->send();
 
 				$user->sent_match = true;
+				$user->save();
+			});
+		}
+
+
+		public function cmd_general()
+		{
+			\System\Init::full();
+
+			$users = \Workshop\SignUp::get_all()
+				->where(array(
+					"sent_general" => false,
+					"solved" => true
+				))
+				->fetch();
+
+			\Helper\Cli::do_over($users, function($key, $user) {
+				$ren = new \System\Template\Renderer\Txt();
+				$ren->reset_layout();
+				$ren->partial('mail/notif/general', array(
+					"user"   => $user,
+					"symvar" => $user->check->symvar
+				));
+
+				$mail = new \Helper\Offcom\Mail(array(
+					'rcpt'     => array($user->email),
+					'subject'  => 'Improtřesk 2015 - To nejdůležitější',
+					'reply_to' => \System\Settings::get('offcom', 'default', 'reply_to'),
+					'message'  => $ren->render_content()
+				));
+
+				$mail->send();
+				return;
+
+				$user->sent_general = true;
 				$user->save();
 			});
 		}
