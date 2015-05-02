@@ -19,6 +19,7 @@ namespace Module\Car
 				$opts[] = array('value' => $icon, 'name' => $icon);
 			}
 
+			$ident = $this->ident;
 			def($ident, null);
 
 			$f = $res->form(array(
