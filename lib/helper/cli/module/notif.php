@@ -126,7 +126,6 @@ namespace Helper\Cli\Module
 				));
 
 				$mail->send();
-				return;
 
 				$user->sent_general = true;
 				$user->save();
