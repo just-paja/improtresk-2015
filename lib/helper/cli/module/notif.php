@@ -103,6 +103,11 @@ namespace Helper\Cli\Module
 					"sent_general" => false,
 					"solved" => true
 				))
+				->add_filter(array(
+					"attr"    => 'id_assigned_to',
+					"type"    => 'is_null',
+					"is_null" => false
+				))
 				->fetch();
 
 			\Helper\Cli::do_over($users, function($key, $user) {
