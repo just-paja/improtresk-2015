@@ -23,6 +23,45 @@ namespace Module\Food
 
 		public function run_list()
 		{
+			$check = \Workshop\Check::get_first(array(
+				"symvar" => $this->symvar
+			))->fetch();
+
+			if (!$check) {
+				throw new \System\Error\NotFound();
+			}
+
+			$signup = $check->signup;
+
+			if (!$signup) {
+				throw new \System\Error\NotFound();
+			}
+
+			$picked = $signup->food->fetch();
+			$days = array();
+
+			foreach ($picked as $item) {
+				$date = $item->date->format('Y-m-d');
+				$type = $item->type == 1 ? 'soup':'main';
+
+				if (!array_key_exists($date, $days)) {
+					$days[$date] = array(
+						"date" => $item->date,
+						"form" => $item->date->format('d. m.'),
+						"soup" => array(),
+						"main" => array(),
+					);
+				}
+
+				$days[$date][$type][] = array(
+					"name" => $item->name,
+					"value" => $item->id
+				);
+			}
+
+			$this->partial('pages/food-user', array(
+				"days" => $days
+			));
 		}
 
 
