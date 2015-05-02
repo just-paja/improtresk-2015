@@ -171,7 +171,7 @@
 		"title":"Tea konference - Improtřesk 2015",
 		"subtitle":"Každý se stane řečníkem",
 		"modules":[
-			["system.partial", {"template":"partial/og-tips", "slot":"og", "wrap":false}],
+			["system.partial", {"template":"partial/og-conference", "slot":"og", "wrap":false}],
 			["system.partial", {"template":"partial/menu-schedule"}],
 			["forms.conference_topic", {"slot":"topics-form"}],
 			["conference.topics", {"slot":"topics"}],
