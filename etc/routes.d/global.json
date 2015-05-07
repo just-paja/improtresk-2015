@@ -260,6 +260,16 @@
 
 	{
 		"name":"nonpayers",
+		"url":"/data/obedy/moje",
+		"title":"Obědy",
+		"subtitle":"Kdo co bude jíst",
+		"modules":[
+			["stats.participant_lunch"]
+		]
+	},
+
+	{
+		"name":"nonpayers",
 		"url":"/data/neplatici",
 		"title":"Neplatiči",
 		"subtitle":"Kdo nám ještě něco dluží",
