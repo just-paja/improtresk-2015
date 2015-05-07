@@ -14,6 +14,7 @@ namespace Module\Stats
 
 			$account_sum = \Workshop\Payment::get_all()
 					->add_cols(array('SUM(amount) as `total`'))
+					->where(array("is_paid" => true))
 					->assoc_with(null)
 					->fetch_one();
 
