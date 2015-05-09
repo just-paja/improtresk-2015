@@ -13,9 +13,7 @@ namespace Module\Stats
 					->fetch_one();
 
 			$account_sum = \Workshop\Payment::get_all()
-					->add_cols(array('SUM(t0.amount) as `total`'))
-					->join('workshop_check', 'ON(wc.id_workshop_check = t0.id_workshop_payment)', 'wc')
-					->where(array("is_paid" => true), 'wc')
+					->add_cols(array('SUM(amount) as `total`'))
 					->assoc_with(null)
 					->fetch_one();
 
