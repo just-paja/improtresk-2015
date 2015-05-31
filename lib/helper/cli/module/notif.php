@@ -22,6 +22,7 @@ namespace Helper\Cli\Module
 			"general" => array('Send notification containing general information'),
 			"lunch"   => array('Send notification about lunch picker'),
 			"match"   => array('Send notification about match survey'),
+			"camp"    => array('Send notification about summer impro camp 2015'),
 		);
 
 
@@ -128,6 +129,45 @@ namespace Helper\Cli\Module
 				$mail->send();
 
 				$user->sent_general = true;
+				$user->save();
+			});
+		}
+
+
+		public function cmd_camp()
+		{
+			\System\Init::full();
+
+			$users = \Workshop\SignUp::get_all()
+				->where(array(
+					"sent_camp" => false,
+					"solved" => true
+				))
+				->add_filter(array(
+					"attr"    => 'id_assigned_to',
+					"type"    => 'is_null',
+					"is_null" => false
+				))
+				->fetch();
+
+			\Helper\Cli::do_over($users, function($key, $user) {
+				$ren = new \System\Template\Renderer\Txt();
+				$ren->reset_layout();
+				$ren->partial('mail/after/improcamp', array(
+					"user"   => $user,
+					"symvar" => $user->check->symvar
+				));
+
+				$mail = new \Helper\Offcom\Mail(array(
+					'rcpt'     => array($user->email),
+					'subject'  => 'Improtřesk 2015 - Pozvánka na letní IMPRO CAMP 2015 se slevou',
+					'reply_to' => \System\Settings::get('offcom', 'default', 'reply_to'),
+					'message'  => $ren->render_content()
+				));
+
+				$mail->send();
+
+				$user->sent_camp = true;
 				$user->save();
 			});
 		}
